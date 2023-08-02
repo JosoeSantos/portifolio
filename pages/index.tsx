@@ -1,12 +1,18 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
+import type { NextPage } from "next";
+import Head from "next/head";
 
 const Home: NextPage = () => {
   return (
-    <div className="flex justify-center items-center flex-col min-h-screen">
+    <div className="flex min-h-screen flex-col items-center justify-center">
       <Head>
         <title>Josoe Santos</title>
         <meta name="description" content="Web developer an technology lover" />
+        <meta
+          name="keywords"
+          content="Josoe Santos, Josoe, josoesantos, Josoe Santos Queiroz, Frontend, Dev"
+        />
+        <meta name="author" content="Josoe Santos" />
+        <meta name="canonical" content="https://josoesantos.dev/" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -14,15 +20,22 @@ const Home: NextPage = () => {
         <h1 className="text-6xl font-bold">
           Welcome to what will be my own site.
         </h1>
-        <dl className='max-w-max'>
+        <dl className="max-w-max">
           <dt className="text-gray-500">Github: </dt>
-          <dd><a className='text-indigo-600 hover:text-indigo-500 visited:text-red-500 pl-3' href="https://github.com/JosoeSantos">@JosoeSantos</a></dd>
+          <dd>
+            <a
+              className="pl-3 text-indigo-600 visited:text-red-500 hover:text-indigo-500"
+              href="https://github.com/JosoeSantos"
+            >
+              @JosoeSantos
+            </a>
+          </dd>
           <dt className="text-gray-500 ">Discord: </dt>
-          <dd className='pl-3'>JosOe#9705</dd>
+          <dd className="pl-3">JosOe#9705</dd>
         </dl>
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
