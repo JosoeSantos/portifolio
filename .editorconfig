@@ -1,0 +1,4 @@
+[default]
+max_line_length=80
+tab_width=2
+indent_style=tab
