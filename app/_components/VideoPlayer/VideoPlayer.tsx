@@ -24,7 +24,7 @@ export function VideoPlayer(props: VideoPlayerProps) {
   const { source, poster } = props
   const { videoRef, playerConfig, playerStatus } = useVideoPlayer()
   return (
-    <div className="w-screen aspect-video flex bg-black">
+    <div className="w-screen aspect-video flex bg-black max-h-screen justify-center items-center">
       <video src={source} poster={poster} ref={videoRef} className="z-0">
         you browser does not support this video
       </video>

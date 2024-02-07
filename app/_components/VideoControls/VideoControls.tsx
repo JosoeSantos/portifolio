@@ -16,7 +16,7 @@ export interface VideoControlsProps {
 }
 
 export function VideoControls(props: VideoControlsProps) {
-  const { isPlaying, onPlay, onPause, onToggleFullScreen } = props
+  const { isPlaying, onPlay, onPause, onToggleFullScreen, onVolumeChange } = props
   return (
     <div className="w-full absolute z-10 flex justify-center items-center gap-2 p-4 bg-emerald-600 self-end justify-self-end">
       <IconButton iconName="skip_previous" className=" hover:bg-green-500" />
@@ -39,6 +39,7 @@ export function VideoControls(props: VideoControlsProps) {
         className="absolute top-2 right-2 hover:bg-green-500"
         onClick={onToggleFullScreen}
       />
+      <IconButton iconName='volume_up' className="absolute top-2 right-2 hover:bg-green-500" />
     </div>
   )
 }

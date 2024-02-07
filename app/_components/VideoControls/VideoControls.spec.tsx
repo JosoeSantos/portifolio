@@ -59,4 +59,20 @@ describe('VideoControls', () => {
     await userEvent.click(videoControls)
     expect(onPause).toHaveBeenCalled()
   })
+
+  it('calls onToggleFullScreen when full screen button is clicked', async () => {
+    const { onToggleFullScreen } = renderComponent()
+    const videoControls = screen.getByRole('button', { name: 'fullscreen' })
+    await userEvent.click(videoControls)
+    expect(onToggleFullScreen).toHaveBeenCalled()
+  })
+
+  it('shoud render a volume button', () => {
+    // Arrange
+    renderComponent()
+    const volumeButton = screen.getByRole('button', { name: 'volume_up'});
+    // Act
+    // Assert
+    expect(volumeButton).toBeInTheDocument();
+})
 })
