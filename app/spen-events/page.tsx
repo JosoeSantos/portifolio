@@ -9,6 +9,5 @@ export const metadata: Metadata = {
   colorScheme: "dark light",
 }
 export default async function Page() {
-
   return <SpenEventsPage />
 }
