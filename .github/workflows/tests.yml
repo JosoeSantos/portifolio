@@ -1,0 +1,48 @@
+name: E2E Tests
+
+on:
+  push:
+    branches: ['*']
+  pull_request:
+    branches: ['*']
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    services:
+      unleash:
+        image: unleashorg/unleash-server
+        ports:
+          - 4242:4242
+        options: >-
+          --health-cmd="wget --no-verbose --tries=1 --spider http://localhost:4242/health || exit 1"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js app
+        run: npm run build
+
+      - name: Start Next.js app
+        run: |
+          npm run start & npx wait-on http://localhost:3000
+        env:
+          NODE_ENV: production
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npx playwright test
