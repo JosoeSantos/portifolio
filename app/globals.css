@@ -1,6 +1,71 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@theme {
+  --font-sans: "Nunito Sans", sans-serif;
+  --font-serif: "Newsreader", serif;
+  --hsl-saturation: 70%;
+  --hsl-lightness: 80%;
+  --animate-rainbow-color: rainbow-color;
+  @keyframes rainbow-color {
+    0% {
+      color: hsl(0, var(--hsl-saturation) 5var (--hsl-lightness));
+    }
+    10% {
+      color: hsl(36, var(--hsl-saturation), var(--hsl-lightness));
+    }
+    20% {
+      color: hsl(72, var(--hsl-saturation), var(--hsl-lightness));
+    }
+    30% {
+      color: hsl(108, var(--hsl-saturation), var(--hsl-lightness));
+    }
+    40% {
+      color: hsl(144, var(--hsl-saturation), var(--hsl-lightness));
+    }
+    50% {
+      color: hsl(180, var(--hsl-saturation), var(--hsl-lightness));
+    }
+    60% {
+      color: hsl(216, var(--hsl-saturation), var(--hsl-lightness));
+    }
+    70% {
+      color: hsl(252, var(--hsl-saturation), var(--hsl-lightness));
+    }
+    80% {
+      color: hsl(288, var(--hsl-saturation), var(--hsl-lightness));
+    }
+    90% {
+      color: hsl(324, var(--hsl-saturation), var(--hsl-lightness));
+    }
+    100% {
+      color: hsl(360, var(--hsl-saturation), var(--hsl-lightness));
+    }
+  }
+}
+
+@utility timeline-scroll-y-nearest {
+  animation-timeline: scroll(block nearest);
+  animation-timing-function: alternate;
+  animation-duration: 1ms;
+}
 
 html,
 body {
