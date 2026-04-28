@@ -1,10 +1,6 @@
 import { Metadata } from "next";
 import SpenEventsPage from "./client-page";
 
-import api from "../../singletons/api";
-
-
-
 export const metadata: Metadata = {
   title: "Josoe Santos | Labs - Spen Events",
   description: "Lab about Spen Events",
@@ -14,6 +10,5 @@ export const metadata: Metadata = {
   colorScheme: "dark light",
 };
 export default async function Page() {
-  api.sayHello();
   return <SpenEventsPage />;
 }
