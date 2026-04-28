@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import type { NextPage } from "next";
 import Head from "next/head";
 
@@ -31,7 +31,7 @@ const Home: NextPage = () => {
               @JosoeSantos
             </a>
           </dd>
-          <dt className="text-gray-500 ">Discord: </dt>
+          <dt className="text-gray-500">Discord: </dt>
           <dd className="pl-3">JosOe#9705</dd>
         </dl>
       </main>

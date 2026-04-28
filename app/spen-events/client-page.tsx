@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useEffect } from "react";
 
@@ -14,11 +14,8 @@ const SpenEventsPage = () => {
   }, []);
   return (
     <div>
-
       <main>
-        <h1>
-          Beware! I&apos;m logging locally all your pointer events!
-        </h1>
+        <h1>Beware! I&apos;m logging locally all your pointer events!</h1>
       </main>
     </div>
   );

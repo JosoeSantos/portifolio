@@ -1,0 +1,24 @@
+.colored h2 {
+  animation-timeline: scroll(block nearest);
+  animation: colorChange;
+  animation-timing-function: alternate;
+  animation-duration: 1ms;
+}
+
+@keyframes colorChange {
+  0% {
+    color: red;
+  }
+  25% {
+    color: green;
+  }
+  50% {
+    color: blue;
+  }
+  75% {
+    color: yellow;
+  }
+  100% {
+    color: red;
+  }
+}
