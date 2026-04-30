@@ -1,5 +1,7 @@
 "use client";
 
+import { Button } from "./button";
+
 type NavLinkProps = {
   href: string;
   active?: boolean;
@@ -31,17 +33,19 @@ function Brand() {
 }
 
 function Links({ children }: { children: React.ReactNode }) {
-  return <nav className="flex gap-6">{children}</nav>;
+  return <nav aria-label="Main" className="flex gap-6">{children}</nav>;
 }
 
 function Link({ href, active, onNav, children }: NavLinkProps) {
   return (
-    <button
+    <a
+      href={href}
       onClick={() => onNav?.(href)}
-      className={`font-sans text-sm cursor-pointer bg-transparent border-none p-0 ${active ? "text-ochre" : "text-ink-2"}`}
+      aria-current={active ? "page" : undefined}
+      className={`font-sans text-sm cursor-pointer no-underline ${active ? "text-ochre" : "text-ink-2"}`}
     >
       {children}
-    </button>
+    </a>
   );
 }
 
@@ -51,12 +55,9 @@ function Actions({ children }: { children: React.ReactNode }) {
 
 function ThemeToggle({ theme, onTheme }: NavThemeToggleProps) {
   return (
-    <button
-      onClick={onTheme}
-      className="font-mono text-xs border border-rule rounded-sm px-2.5 py-1 hover:bg-bg-sunken transition-colors cursor-pointer bg-transparent"
-    >
+    <Button variant="ghost" onClick={onTheme}>
       {theme === "paper" ? "dark" : "light"}
-    </button>
+    </Button>
   );
 }
 
