@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "./button";
+import NextLink from "next/link";
 
 type NavLinkProps = {
   href: string;
@@ -38,14 +38,14 @@ function Links({ children }: { children: React.ReactNode }) {
 
 function Link({ href, active, onNav, children }: NavLinkProps) {
   return (
-    <a
+    <NextLink
       href={href}
       onClick={() => onNav?.(href)}
       aria-current={active ? "page" : undefined}
-      className={`font-sans text-sm cursor-pointer no-underline ${active ? "text-ochre" : "text-ink-2"}`}
+      className={`font-sans text-sm no-underline ${active ? "text-ochre" : "text-ink-2"}`}
     >
       {children}
-    </a>
+    </NextLink>
   );
 }
 
@@ -55,9 +55,14 @@ function Actions({ children }: { children: React.ReactNode }) {
 
 function ThemeToggle({ theme, onTheme }: NavThemeToggleProps) {
   return (
-    <Button variant="ghost" onClick={onTheme}>
+    <button
+      type="button"
+      onClick={onTheme}
+      aria-pressed={theme === "ink"}
+      className="font-mono text-xs border border-rule rounded-sm px-2.5 py-1 hover:bg-bg-sunken transition-colors cursor-pointer bg-transparent"
+    >
       {theme === "paper" ? "dark" : "light"}
-    </Button>
+    </button>
   );
 }
 
