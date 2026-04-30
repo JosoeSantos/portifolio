@@ -1,6 +1,7 @@
 "use client";
 
 import NextLink from "next/link";
+import { Button } from "./button";
 
 type NavLinkProps = {
   href: string;
@@ -55,14 +56,9 @@ function Actions({ children }: { children: React.ReactNode }) {
 
 function ThemeToggle({ theme, onTheme }: NavThemeToggleProps) {
   return (
-    <button
-      type="button"
-      onClick={onTheme}
-      aria-pressed={theme === "ink"}
-      className="font-mono text-xs border border-rule rounded-sm px-2.5 py-1 hover:bg-bg-sunken transition-colors cursor-pointer bg-transparent"
-    >
+    <Button variant="ghost" onClick={onTheme} aria-pressed={theme === "ink"}>
       {theme === "paper" ? "dark" : "light"}
-    </button>
+    </Button>
   );
 }
 
