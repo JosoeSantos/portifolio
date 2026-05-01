@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>type · families</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        background: var(--bg);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px;
+      }
+      .card {
+        border: 1px solid var(--rule);
+        border-radius: var(--r-2);
+        padding: 14px;
+      }
+      .label {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--fg-3);
+        margin-bottom: 8px;
+      }
+      .name {
+        font-size: 13px;
+        color: var(--fg);
+        margin-bottom: 12px;
+      }
+      .glyph {
+        font-size: 44px;
+        line-height: 1;
+        color: var(--fg);
+        letter-spacing: -0.02em;
+      }
+      .ag-d {
+        font-family: var(--font-display);
+        font-weight: 600;
+      }
+      .ag-s {
+        font-family: var(--font-serif);
+        font-weight: 500;
+      }
+      .ag-m {
+        font-family: var(--font-mono);
+        font-weight: 500;
+      }
+      .role {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--fg-3);
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div class="card">
+        <div class="label">display / ui</div>
+        <div class="name">Nunito Sans</div>
+        <div class="glyph ag-d">Aa</div>
+        <div class="role">headings · nav · buttons</div>
+      </div>
+      <div class="card">
+        <div class="label">reading</div>
+        <div class="name">Newsreader</div>
+        <div class="glyph ag-s">Aa</div>
+        <div class="role">prose · essays · notes</div>
+      </div>
+      <div class="card">
+        <div class="label">mono</div>
+        <div class="name">Fira Code</div>
+        <div class="glyph ag-m">Aa</div>
+        <div class="role">code · meta · tables</div>
+      </div>
+    </div>
+  </body>
+</html>

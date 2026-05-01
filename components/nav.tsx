@@ -1,77 +1,74 @@
 "use client";
 
-import NextLink from "next/link";
-import { Button } from "./button";
+import Link from "next/link";
+import { useState } from "react";
 
-type NavLinkProps = {
+interface NavRootProps {
+  children: React.ReactNode;
+}
+
+interface NavLinkProps {
   href: string;
   active?: boolean;
-  onNav?: (href: string) => void;
   children: React.ReactNode;
-};
+  onNav?: () => void;
+}
 
-type NavThemeToggleProps = {
+interface NavThemeToggleProps {
   theme: "paper" | "ink";
-  onTheme: () => void;
+  onTheme: (theme: "paper" | "ink") => void;
+}
+
+const Root = ({ children }: NavRootProps) => (
+  <nav className="flex items-center justify-between px-6 py-4">{children}</nav>
+);
+
+const Brand = () => (
+  <Link href="/" className="text-xl font-bold font-serif">
+    Josoe.
+  </Link>
+);
+
+const Links = ({ children }: { children: React.ReactNode }) => (
+  <div className="flex gap-6">{children}</div>
+);
+
+const LinkItem = ({ href, active, children, onNav }: NavLinkProps) => (
+  <Link
+    href={href}
+    onClick={onNav}
+    className={`text-sm font-sans ${
+      active ? "text-ochre font-bold" : "text-ink hover:text-ochre"
+    }`}
+  >
+    {children}
+  </Link>
+);
+
+const Actions = ({ children }: { children: React.ReactNode }) => (
+  <div className="flex items-center gap-4">{children}</div>
+);
+
+const ThemeToggle = ({ theme, onTheme }: NavThemeToggleProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <button
+      onClick={() => onTheme(theme === "paper" ? "ink" : "paper")}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="text-sm font-sans text-ink hover:text-ochre"
+    >
+      {isHovered ? (theme === "paper" ? "dark" : "light") : theme}
+    </button>
+  );
 };
 
-function Root({ children }: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <header className="border-rule sticky top-0 z-50 border-b saturate-150 backdrop-blur-[10px]">
-      <div className="flex items-center justify-between px-8 py-[14px]">
-        {children}
-      </div>
-    </header>
-  );
-}
-
-function Brand() {
-  return (
-    <span className="text-ink font-sans font-semibold tracking-tight">
-      josoe<span className="text-ochre">.</span>
-    </span>
-  );
-}
-
-function Links({ children }: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <nav aria-label="Main" className="flex gap-[18px]">
-      {children}
-    </nav>
-  );
-}
-
-function Link({ href, active, onNav, children }: Readonly<NavLinkProps>) {
-  return (
-    <NextLink
-      href={href}
-      onClick={() => onNav?.(href)}
-      aria-current={active ? "page" : undefined}
-      className={`font-sans text-sm no-underline ${
-        active ? "text-ochre" : "text-ink-2"
-      }`}
-    >
-      {children}
-    </NextLink>
-  );
-}
-
-function Actions({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <div className="flex items-center gap-4">{children}</div>;
-}
-
-function ThemeToggle({ theme, onTheme }: Readonly<NavThemeToggleProps>) {
-  return (
-    <Button
-      variant="secondary"
-      size="compact"
-      className="text-ink-2"
-      onClick={onTheme}
-      aria-pressed={theme === "ink"}
-    >
-      {theme === "paper" ? "dark" : "light"}
-    </Button>
-  );
-}
-
-export const Nav = { Root, Brand, Links, Link, Actions, ThemeToggle };
+export const Nav = {
+  Root,
+  Brand,
+  Links,
+  Link: LinkItem,
+  Actions,
+  ThemeToggle,
+};

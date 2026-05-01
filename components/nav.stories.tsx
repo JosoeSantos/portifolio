@@ -12,9 +12,15 @@ export const Default: StoryObj = {
       <Nav.Brand />
       <Nav.Actions>
         <Nav.Links>
-          <Nav.Link href="/essays" onNav={() => {}}>essays</Nav.Link>
-          <Nav.Link href="/projects" onNav={() => {}}>projects</Nav.Link>
-          <Nav.Link href="/now" onNav={() => {}}>now</Nav.Link>
+          <Nav.Link href="/essays" active onNav={() => {}}>
+            essays
+          </Nav.Link>
+          <Nav.Link href="/projects" onNav={() => {}}>
+            projects
+          </Nav.Link>
+          <Nav.Link href="/now" onNav={() => {}}>
+            now
+          </Nav.Link>
         </Nav.Links>
         <Nav.ThemeToggle theme="paper" onTheme={() => {}} />
       </Nav.Actions>
@@ -28,9 +34,15 @@ export const WithActiveLink: StoryObj = {
       <Nav.Brand />
       <Nav.Actions>
         <Nav.Links>
-          <Nav.Link href="/essays" active onNav={() => {}}>essays</Nav.Link>
-          <Nav.Link href="/projects" onNav={() => {}}>projects</Nav.Link>
-          <Nav.Link href="/now" onNav={() => {}}>now</Nav.Link>
+          <Nav.Link href="/essays" active onNav={() => {}}>
+            essays
+          </Nav.Link>
+          <Nav.Link href="/projects" onNav={() => {}}>
+            projects
+          </Nav.Link>
+          <Nav.Link href="/now" onNav={() => {}}>
+            now
+          </Nav.Link>
         </Nav.Links>
         <Nav.ThemeToggle theme="paper" onTheme={() => {}} />
       </Nav.Actions>
@@ -45,9 +57,15 @@ export const DarkTheme: StoryObj = {
         <Nav.Brand />
         <Nav.Actions>
           <Nav.Links>
-            <Nav.Link href="/essays" active onNav={() => {}}>essays</Nav.Link>
-            <Nav.Link href="/projects" onNav={() => {}}>projects</Nav.Link>
-            <Nav.Link href="/now" onNav={() => {}}>now</Nav.Link>
+            <Nav.Link href="/essays" active onNav={() => {}}>
+              essays
+            </Nav.Link>
+            <Nav.Link href="/projects" onNav={() => {}}>
+              projects
+            </Nav.Link>
+            <Nav.Link href="/now" onNav={() => {}}>
+              now
+            </Nav.Link>
           </Nav.Links>
           <Nav.ThemeToggle theme="ink" onTheme={() => {}} />
         </Nav.Actions>
@@ -66,12 +84,16 @@ export const BrandOnly: StoryObj = {
 
 export const LinkActive: StoryObj = {
   render: () => (
-    <Nav.Link href="/essays" active onNav={() => {}}>essays</Nav.Link>
+    <Nav.Link href="/essays" active onNav={() => {}}>
+      essays
+    </Nav.Link>
   ),
 };
 
 export const LinkInactive: StoryObj = {
   render: () => (
-    <Nav.Link href="/essays" onNav={() => {}}>essays</Nav.Link>
+    <Nav.Link href="/essays" onNav={() => {}}>
+      essays
+    </Nav.Link>
   ),
 };

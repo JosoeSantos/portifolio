@@ -40,18 +40,23 @@ All Ochre tokens land inside `@theme` so Tailwind generates utilities:
 - `--color-status-archive: #8A6A1F`
 
 **Fonts**
+
 - `--font-mono: "Fira Code", ...` (Fira Code loaded via `next/font/google`, weight 400/500)
 
 **Type scale (1.25 major-third)**
+
 - `--text-12` through `--text-80` matching Ochre's `--t-*` ramp
 
 **Spacing (4px base)**
+
 - `--spacing-1` (4px) through `--spacing-10` (128px)
 
 **Radii**
+
 - `--radius-flat: 0`, `--radius-xs: 2px`, `--radius-sm: 4px`, `--radius-md: 8px`
 
 **Shadows**
+
 - `--shadow-1: 0 1px 2px rgba(25,21,18,0.08)`
 - `--shadow-2: 0 4px 16px rgba(25,21,18,0.12)`
 
@@ -66,17 +71,17 @@ All Ochre tokens land inside `@theme` so Tailwind generates utilities:
 
 Same 9 exports, same `{ children: React.ReactNode }` prop signature. `mdx-components.tsx` unchanged.
 
-| Component | Key classes |
-|---|---|
-| `H1` | `font-sans font-semibold text-[clamp(2.25rem,5vw,4rem)] leading-[1.05] tracking-tight` |
-| `H2` | `font-sans font-semibold text-[1.875rem] leading-[1.2] tracking-tight mb-6` |
-| `H3` | `font-sans font-semibold text-[1.25rem] leading-[1.2] mb-4` |
-| `H4` | `font-sans font-medium text-base leading-[1.4] mb-3` |
-| `H5` | `font-sans font-medium text-[0.9375rem] leading-[1.4] mb-2` |
-| `H6` | `font-mono text-[0.75rem] leading-[1.4] tracking-[0.04em] uppercase text-ink-3 mb-2` |
-| `P` | `font-serif text-base leading-[1.6] mb-4` |
-| `Ul` | `font-serif text-base leading-[1.6] list-disc list-inside mb-4` |
-| `Li` | `font-serif` |
+| Component    | Key classes                                                                                 |
+| ------------ | ------------------------------------------------------------------------------------------- |
+| `H1`         | `font-sans font-semibold text-[clamp(2.25rem,5vw,4rem)] leading-[1.05] tracking-tight`      |
+| `H2`         | `font-sans font-semibold text-[1.875rem] leading-[1.2] tracking-tight mb-6`                 |
+| `H3`         | `font-sans font-semibold text-[1.25rem] leading-[1.2] mb-4`                                 |
+| `H4`         | `font-sans font-medium text-base leading-[1.4] mb-3`                                        |
+| `H5`         | `font-sans font-medium text-[0.9375rem] leading-[1.4] mb-2`                                 |
+| `H6`         | `font-mono text-[0.75rem] leading-[1.4] tracking-[0.04em] uppercase text-ink-3 mb-2`        |
+| `P`          | `font-serif text-base leading-[1.6] mb-4`                                                   |
+| `Ul`         | `font-serif text-base leading-[1.6] list-disc list-inside mb-4`                             |
+| `Li`         | `font-serif`                                                                                |
 | `Blockquote` | `border-l-2 border-ochre pl-4 lg:pl-6 mb-6 animate-rainbow-color timeline-scroll-y-nearest` |
 
 ## UI Kit Components (`components/`)
@@ -137,19 +142,19 @@ Props: `name: string`, `year?: number`
 
 One `*.stories.tsx` per source file, co-located:
 
-| Source | Story file | Stories |
-|---|---|---|
-| `typography.tsx` | `typography.stories.tsx` (update existing) | One per export + `TypographyScale` overview |
-| `components/nav.tsx` | `components/nav.stories.tsx` | `Default`, `ActiveEssays` |
-| `components/hero.tsx` | `components/hero.stories.tsx` | `Default` |
-| `components/button.tsx` | `components/button.stories.tsx` | `Primary`, `Secondary`, `Ghost` |
-| `components/project-card.tsx` | `components/project-card.stories.tsx` | `Live`, `Draft`, `Archive` |
-| `components/tag.tsx` | `components/tag.stories.tsx` | `Default`, `Active`, `Solid` |
-| `components/essay-row.tsx` | `components/essay-row.stories.tsx` | `Default`, `WithTags` |
-| `components/now-list.tsx` | `components/now-list.stories.tsx` | `Default` |
-| `components/code-block.tsx` | `components/code-block.stories.tsx` | `WithCaption`, `Minimal` |
-| `components/footnote.tsx` | `components/footnote.stories.tsx` | `Default` |
-| `components/footer.tsx` | `components/footer.stories.tsx` | `Default` |
+| Source                        | Story file                                 | Stories                                     |
+| ----------------------------- | ------------------------------------------ | ------------------------------------------- |
+| `typography.tsx`              | `typography.stories.tsx` (update existing) | One per export + `TypographyScale` overview |
+| `components/nav.tsx`          | `components/nav.stories.tsx`               | `Default`, `ActiveEssays`                   |
+| `components/hero.tsx`         | `components/hero.stories.tsx`              | `Default`                                   |
+| `components/button.tsx`       | `components/button.stories.tsx`            | `Primary`, `Secondary`, `Ghost`             |
+| `components/project-card.tsx` | `components/project-card.stories.tsx`      | `Live`, `Draft`, `Archive`                  |
+| `components/tag.tsx`          | `components/tag.stories.tsx`               | `Default`, `Active`, `Solid`                |
+| `components/essay-row.tsx`    | `components/essay-row.stories.tsx`         | `Default`, `WithTags`                       |
+| `components/now-list.tsx`     | `components/now-list.stories.tsx`          | `Default`                                   |
+| `components/code-block.tsx`   | `components/code-block.stories.tsx`        | `WithCaption`, `Minimal`                    |
+| `components/footnote.tsx`     | `components/footnote.stories.tsx`          | `Default`                                   |
+| `components/footer.tsx`       | `components/footer.stories.tsx`            | `Default`                                   |
 
 All stories use realistic Ochre-voice content (lowercase, dry, specific). CSF3 format with named story exports.
 
@@ -193,4 +198,3 @@ components/
 - `npm run storybook` shows all components rendering with correct Ochre tokens
 - `npm run build` passes with no TypeScript errors
 - `npm run lint` passes
-- `typography.tsx` exports are backward-compatible (same names, same prop shapes)

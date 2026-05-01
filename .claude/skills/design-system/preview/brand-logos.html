@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>logo + monogram</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 28px;
+        background: var(--bg);
+      }
+      .row {
+        display: flex;
+        gap: 36px;
+        align-items: center;
+      }
+      .item {
+        text-align: center;
+      }
+      .frame {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80px;
+        padding: 0 18px;
+        border: 1px solid var(--rule);
+        border-radius: var(--r-2);
+        background: var(--bg-raised);
+        min-width: 140px;
+      }
+      .word {
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 24px;
+        letter-spacing: -0.02em;
+        color: var(--fg);
+      }
+      .word .dot {
+        color: var(--accent);
+      }
+      .mono {
+        width: 48px;
+        height: 48px;
+        border: 1px solid var(--accent);
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-display);
+        font-weight: 600;
+        font-size: 22px;
+        color: var(--accent);
+        letter-spacing: -1px;
+      }
+      .fav {
+        width: 32px;
+        height: 32px;
+        background: var(--accent);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: 16px;
+        color: var(--paper);
+        letter-spacing: -0.5px;
+      }
+      .tok {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--fg-3);
+        margin-top: 8px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="item">
+        <div class="frame">
+          <span class="word">[name]<span class="dot">.</span></span>
+        </div>
+        <div class="tok">wordmark</div>
+      </div>
+      <div class="item">
+        <div class="frame"><div class="mono">xy</div></div>
+        <div class="tok">monogram</div>
+      </div>
+      <div class="item">
+        <div class="frame"><div class="fav">xy</div></div>
+        <div class="tok">favicon</div>
+      </div>
+    </div>
+  </body>
+</html>

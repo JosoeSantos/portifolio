@@ -1,6 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 
-import { H1, H2, H3, H4, H5, H6, P, Ul, Li, Blockquote } from "./typography";
+import { Blockquote, H1, H2, H3, H4, H5, H6, Li, P, Ul } from "./typography";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

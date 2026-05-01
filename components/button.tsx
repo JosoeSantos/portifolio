@@ -16,7 +16,7 @@ export function Button({ variant, size = "default", children, className, ...rest
   };
 
   const variants = {
-    primary: "bg-ochre text-paper hover:bg-ochre-deep",
+    primary: "bg-ochre text-ochre-fg hover:bg-ochre-deep",
     secondary:
       "bg-transparent border border-rule hover:border-rule-strong hover:bg-bg-sunken",
     ghost: "bg-transparent hover:bg-bg-sunken",

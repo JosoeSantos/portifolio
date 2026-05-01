@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>type · serif body</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 28px;
+        background: var(--bg);
+      }
+      .meta {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--fg-3);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .prose {
+        font-family: var(--font-serif);
+        color: var(--fg);
+      }
+      .prose p {
+        margin: 0 0 10px;
+      }
+      .prose .lead {
+        font-size: 18px;
+        line-height: 1.55;
+      }
+      .prose .body {
+        font-size: 16px;
+        line-height: 1.65;
+        max-width: 56ch;
+      }
+      .prose em {
+        font-style: italic;
+      }
+      .prose a {
+        color: var(--accent);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="meta">newsreader · prose</div>
+    <div class="prose">
+      <p class="lead">
+        i build small, careful software — and write about it occasionally.
+      </p>
+      <p class="body">
+        long-form reading sets in <em>newsreader</em> at 16/1.65 with optical
+        sizing. the measure caps at 56–62ch so the eye doesn't wander.
+        <a href="#">links</a> wear the ochre, underlined hair-thin.
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>buttons</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 28px;
+        background: var(--bg);
+        font-family: var(--font-ui);
+      }
+      .row {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .row + .row {
+        margin-top: 14px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font: 500 14px var(--font-ui);
+        border-radius: var(--r-2);
+        padding: 8px 14px;
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: all var(--d-fast) var(--ease);
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .btn.primary {
+        background: var(--accent);
+        color: var(--paper);
+      }
+      .btn.primary:hover {
+        background: var(--accent-deep);
+      }
+      .btn.secondary {
+        background: var(--bg);
+        color: var(--fg);
+        border-color: var(--rule);
+      }
+      .btn.secondary:hover {
+        border-color: var(--rule-strong);
+        background: var(--bg-sunken);
+      }
+      .btn.ghost {
+        background: transparent;
+        color: var(--fg);
+      }
+      .btn.ghost:hover {
+        background: var(--bg-sunken);
+      }
+      .btn.sm {
+        font-size: 12px;
+        padding: 5px 10px;
+      }
+      .btn.lg {
+        font-size: 15px;
+        padding: 11px 18px;
+      }
+      .label {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--fg-3);
+        width: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <span class="label">primary</span
+      ><button class="btn primary">Read essays</button
+      ><button class="btn primary">Subscribe →</button
+      ><button class="btn primary sm">Copy link</button>
+    </div>
+    <div class="row">
+      <span class="label">secondary</span
+      ><button class="btn secondary">View source</button
+      ><button class="btn secondary">Filter by tag</button
+      ><button class="btn secondary sm">Cancel</button>
+    </div>
+    <div class="row">
+      <span class="label">ghost</span
+      ><button class="btn ghost">Show more</button
+      ><button class="btn ghost">Sort: newest</button
+      ><button class="btn ghost sm">Reset</button>
+    </div>
+  </body>
+</html>

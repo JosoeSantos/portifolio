@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>links</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 28px;
+        background: var(--bg);
+        font-family: var(--font-serif);
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--fg);
+      }
+      .label {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--fg-3);
+        display: inline-block;
+        width: 100px;
+      }
+      .row + .row {
+        margin-top: 6px;
+      }
+      .a-prose {
+        color: var(--accent);
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+      .a-nav {
+        font-family: var(--font-ui);
+        font-size: 14px;
+        color: var(--fg);
+      }
+      .a-nav.active {
+        color: var(--accent);
+      }
+      .a-meta {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--fg-3);
+        border-bottom: 1px solid var(--rule);
+      }
+      .a-arrow {
+        font-family: var(--font-ui);
+        font-size: 14px;
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <span class="label">in prose</span>see
+      <a href="#" class="a-prose">notes on parsing</a> for a longer note.
+    </div>
+    <div class="row">
+      <span class="label">nav</span><a class="a-nav">essays</a> ·
+      <a class="a-nav active">projects</a> · <a class="a-nav">now</a> ·
+      <a class="a-nav">archive</a>
+    </div>
+    <div class="row">
+      <span class="label">metadata</span
+      ><a class="a-meta">github.com/xy/typeset</a>
+    </div>
+    <div class="row">
+      <span class="label">arrow</span><a class="a-arrow">read more →</a>
+    </div>
+  </body>
+</html>

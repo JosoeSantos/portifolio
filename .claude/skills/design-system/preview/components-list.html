@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>list row</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        background: var(--bg);
+      }
+      .title {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--fg-3);
+        margin-bottom: 8px;
+      }
+      .list {
+        border-top: 1px solid var(--rule);
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 90px 1fr auto;
+        gap: 16px;
+        padding: 10px 4px;
+        border-bottom: 1px solid var(--rule);
+        align-items: baseline;
+        transition: background var(--d-fast) var(--ease);
+      }
+      .row:hover {
+        background: var(--bg-sunken);
+      }
+      .date {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--fg-3);
+      }
+      .name {
+        font-family: var(--font-display);
+        font-size: 15px;
+        color: var(--fg);
+        font-weight: 500;
+      }
+      .name .arrow {
+        color: var(--accent);
+        margin-left: 4px;
+        opacity: 0;
+        transition: opacity var(--d-fast) var(--ease);
+      }
+      .row:hover .name .arrow {
+        opacity: 1;
+      }
+      .tags {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--fg-3);
+      }
+      .tags .accent {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="title">essays · index row</div>
+    <div class="list">
+      <div class="row">
+        <span class="date">2026-04-22</span
+        ><span class="name"
+          >notes on writing a parser<span class="arrow">→</span></span
+        ><span class="tags"><span class="accent">#parsers</span> · #c</span>
+      </div>
+      <div class="row">
+        <span class="date">2026-03-08</span
+        ><span class="name"
+          >small things, again<span class="arrow">→</span></span
+        ><span class="tags">#essays</span>
+      </div>
+      <div class="row">
+        <span class="date">2026-02-14</span
+        ><span class="name"
+          >the case for hairlines<span class="arrow">→</span></span
+        ><span class="tags">#design · #web</span>
+      </div>
+    </div>
+  </body>
+</html>

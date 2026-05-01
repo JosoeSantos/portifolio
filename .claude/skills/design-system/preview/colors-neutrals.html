@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>palette · neutrals</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        background: var(--bg);
+      }
+      .row {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 8px;
+      }
+      .swatch {
+        border: 1px solid var(--rule);
+        border-radius: var(--r-2);
+        overflow: hidden;
+      }
+      .chip {
+        height: 64px;
+      }
+      .meta {
+        padding: 6px 8px;
+      }
+      .name {
+        font-family: var(--font-ui);
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--fg);
+        display: block;
+      }
+      .hex {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--fg-3);
+        display: block;
+        margin-top: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="swatch">
+        <div class="chip" style="background: #ffffff"></div>
+        <div class="meta">
+          <span class="name">raised</span><span class="hex">#FFFFFF</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background: #fdfcfa"></div>
+        <div class="meta">
+          <span class="name">paper</span><span class="hex">#FDFCFA</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background: #f6f4ef"></div>
+        <div class="meta">
+          <span class="name">sunken</span><span class="hex">#F6F4EF</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background: #ece7dd"></div>
+        <div class="meta">
+          <span class="name">rule</span><span class="hex">#ECE7DD</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background: #9a8f84"></div>
+        <div class="meta">
+          <span class="name">ink-4</span><span class="hex">#9A8F84</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background: #3a332d"></div>
+        <div class="meta">
+          <span class="name">ink-2</span><span class="hex">#3A332D</span>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background: #191512"></div>
+        <div class="meta">
+          <span class="name">ink</span><span class="hex">#191512</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

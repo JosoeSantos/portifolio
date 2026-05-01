@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>tags</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 28px;
+        background: var(--bg);
+      }
+      .row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .row + .row {
+        margin-top: 14px;
+      }
+      .label {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--fg-3);
+        width: 80px;
+        flex: none;
+      }
+      .tag {
+        font: 500 11px var(--font-mono);
+        letter-spacing: 0.02em;
+        border: 1px solid var(--rule);
+        border-radius: var(--r-1);
+        padding: 3px 8px;
+        color: var(--fg-2);
+        background: transparent;
+      }
+      .tag.active {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+      .tag.solid {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: var(--paper);
+      }
+      .tag.muted {
+        color: var(--fg-3);
+      }
+      .badge {
+        font: 500 10px var(--font-mono);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: 2px 6px;
+        border-radius: var(--r-1);
+        background: var(--bg-sunken);
+        color: var(--fg-3);
+        border: 1px solid var(--rule);
+      }
+      .badge.live {
+        color: var(--status-live);
+        border-color: var(--status-live);
+      }
+      .badge.draft {
+        color: var(--status-draft);
+        border-color: var(--status-draft);
+      }
+      .badge.archive {
+        color: var(--status-archive);
+        border-color: var(--status-archive);
+      }
+      .swatches {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+      .swatch {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--fg-3);
+      }
+      .chip {
+        width: 12px;
+        height: 12px;
+        border-radius: 2px;
+        border: 1px solid var(--rule);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <span class="label">tag</span> <span class="tag">#parsers</span
+      ><span class="tag active">#rust</span><span class="tag">#c</span
+      ><span class="tag muted">#archive</span
+      ><span class="tag solid">+ all</span>
+    </div>
+    <div class="row">
+      <span class="label">badge</span> <span class="badge live">live</span
+      ><span class="badge draft">draft</span
+      ><span class="badge archive">archive</span
+      ><span class="badge">v0.4.2</span><span class="badge">2026</span>
+    </div>
+    <div class="row">
+      <span class="label">tokens</span>
+      <div class="swatches">
+        <span class="swatch"
+          ><span class="chip" style="background: #4f6b3e"></span
+          >--status-live</span
+        >
+        <span class="swatch"
+          ><span class="chip" style="background: #913832"></span
+          >--status-draft</span
+        >
+        <span class="swatch"
+          ><span class="chip" style="background: #8a6a1f"></span
+          >--status-archive</span
+        >
+      </div>
+    </div>
+  </body>
+</html>

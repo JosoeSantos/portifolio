@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>shadow</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 36px 28px;
+        background: var(--bg);
+      }
+      .row {
+        display: flex;
+        gap: 36px;
+      }
+      .item {
+        text-align: center;
+      }
+      .box {
+        width: 140px;
+        height: 88px;
+        background: var(--bg-raised);
+        border: 1px solid var(--rule);
+        border-radius: var(--r-3);
+      }
+      .s1 {
+        box-shadow: var(--shadow-1);
+      }
+      .s2 {
+        box-shadow: var(--shadow-2);
+      }
+      .tok {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--fg-3);
+        margin-top: 14px;
+      }
+      .v {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--accent);
+        margin-top: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="item">
+        <div class="box"></div>
+        <div class="tok">none</div>
+        <div class="v">borders carry structure</div>
+      </div>
+      <div class="item">
+        <div class="box s1"></div>
+        <div class="tok">--shadow-1</div>
+        <div class="v">menus · toasts</div>
+      </div>
+      <div class="item">
+        <div class="box s2"></div>
+        <div class="tok">--shadow-2</div>
+        <div class="v">dialogs (rare)</div>
+      </div>
+    </div>
+  </body>
+</html>

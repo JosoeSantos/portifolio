@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>semantic colors</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        background: var(--bg);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+      .col h4 {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--fg-3);
+        margin: 0 0 10px;
+        font-weight: 500;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 0;
+        border-bottom: 1px solid var(--rule);
+      }
+      .row:last-child {
+        border-bottom: 0;
+      }
+      .dot {
+        width: 22px;
+        height: 22px;
+        border-radius: 3px;
+        border: 1px solid var(--rule);
+        flex: none;
+      }
+      .label {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--fg);
+        flex: 1;
+      }
+      .val {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--fg-3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div class="col">
+        <h4>surface</h4>
+        <div class="row">
+          <div class="dot" style="background: #fdfcfa"></div>
+          <span class="label">--bg</span><span class="val">paper</span>
+        </div>
+        <div class="row">
+          <div class="dot" style="background: #f6f4ef"></div>
+          <span class="label">--bg-sunken</span><span class="val">sunken</span>
+        </div>
+        <div class="row">
+          <div class="dot" style="background: #ffffff"></div>
+          <span class="label">--bg-raised</span><span class="val">raised</span>
+        </div>
+        <div class="row">
+          <div class="dot" style="background: #ece7dd"></div>
+          <span class="label">--rule</span><span class="val">hairline</span>
+        </div>
+      </div>
+      <div class="col">
+        <h4>foreground</h4>
+        <div class="row">
+          <div class="dot" style="background: #191512"></div>
+          <span class="label">--fg</span><span class="val">primary</span>
+        </div>
+        <div class="row">
+          <div class="dot" style="background: #3a332d"></div>
+          <span class="label">--fg-2</span><span class="val">secondary</span>
+        </div>
+        <div class="row">
+          <div class="dot" style="background: #6f665e"></div>
+          <span class="label">--fg-3</span><span class="val">tertiary</span>
+        </div>
+        <div class="row">
+          <div class="dot" style="background: #913832"></div>
+          <span class="label">--accent</span><span class="val">ochre</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

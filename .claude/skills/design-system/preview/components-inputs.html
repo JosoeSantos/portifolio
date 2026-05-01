@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>inputs</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 28px;
+        background: var(--bg);
+        font-family: var(--font-ui);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px 24px;
+      }
+      label {
+        display: block;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--fg-3);
+        margin-bottom: 6px;
+      }
+      .field {
+        display: flex;
+        align-items: center;
+        background: var(--bg-raised);
+        border: 1px solid var(--rule);
+        border-radius: var(--r-2);
+        padding: 0 10px;
+        transition: border-color var(--d-fast) var(--ease);
+      }
+      .field:focus-within {
+        border-color: var(--accent);
+      }
+      .field input {
+        flex: 1;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        font: 14px var(--font-ui);
+        color: var(--fg);
+        padding: 9px 0;
+      }
+      .field input::placeholder {
+        color: var(--fg-4);
+      }
+      .pre {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        color: var(--fg-3);
+        margin-right: 6px;
+      }
+      .focused {
+        border-color: var(--accent);
+      }
+      .err {
+        border-color: var(--accent);
+      }
+      .help {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--accent);
+        margin-top: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div>
+        <label>email</label>
+        <div class="field"><input value="hi@example.com" /></div>
+      </div>
+      <div>
+        <label>tag filter</label>
+        <div class="field">
+          <span class="pre">#</span><input placeholder="parsers" />
+        </div>
+      </div>
+      <div>
+        <label>focused</label>
+        <div class="field focused"><input value="search…" /></div>
+      </div>
+      <div>
+        <label>error</label>
+        <div class="field err"><input value="not a valid url" /></div>
+        <div class="help">expected https://…</div>
+      </div>
+    </div>
+  </body>
+</html>

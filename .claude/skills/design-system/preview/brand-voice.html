@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>voice samples</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        background: var(--bg);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .item {
+        border: 1px solid var(--rule);
+        border-radius: var(--r-2);
+        padding: 14px;
+        background: var(--bg-raised);
+      }
+      .label {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--fg-3);
+        margin-bottom: 8px;
+      }
+      .copy {
+        font-family: var(--font-serif);
+        font-size: 14px;
+        line-height: 1.55;
+        color: var(--fg);
+      }
+      .copy code {
+        font-size: 12px;
+      }
+      .accent {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div class="item">
+        <div class="label">intro · about</div>
+        <div class="copy">
+          hi, i'm <span class="accent">[name]</span>. i build small, careful
+          software. currently working on a typesetting tool and a notes app for
+          myself.
+        </div>
+      </div>
+      <div class="item">
+        <div class="label">now page</div>
+        <div class="copy">
+          reading: <em>the c programming language</em>. working on: a parser for
+          a tiny lisp.
+          <span style="color: var(--fg-3)">last updated 12 days ago.</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="label">404</div>
+        <div class="copy">
+          the page <code>/blog/2019/foo</code> is not here. it may have moved,
+          or i may have deleted it.
+        </div>
+      </div>
+      <div class="item">
+        <div class="label">project entry</div>
+        <div class="copy">
+          <strong>typeset</strong> — a typesetting tool for personal essays.
+          <span class="accent">v0.4.2 · shipped mar 12</span>.
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

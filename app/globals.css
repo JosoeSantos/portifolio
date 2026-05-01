@@ -21,12 +21,73 @@
 @theme {
   --font-sans: "Nunito Sans", sans-serif;
   --font-serif: "Newsreader", serif;
+  --font-mono: var(--font-fira-code), "Fira Code", monospace;
   --hsl-saturation: 70%;
   --hsl-lightness: 80%;
+
+  /* Ochre color tokens */
+  --color-ochre: #913832;
+  --color-ochre-tint: #b85b53;
+  --color-ochre-deep: #6a221d;
+  --color-ochre-fg: #fdfcfa;
+  --color-paper: #fdfcfa;
+  --color-ink: #191512;
+  --color-ink-2: #3a332d;
+  --color-ink-3: #6f665e;
+  --color-ink-4: #9a8f84;
+  --color-rule: #ece7dd;
+  --color-rule-strong: #d4ccbc;
+  --color-bg-sunken: #f6f4ef;
+  --color-bg-raised: #ffffff;
+  --color-status-live: #4f6b3e;
+  --color-status-draft: #913832;
+  --color-status-archive: #8a6a1f;
+
+  /* Type scale (1.25 major-third) */
+  --text-12: 0.75rem;
+  --text-14: 0.875rem;
+  --text-16: 1rem;
+  --text-20: 1.25rem;
+  --text-24: 1.5rem;
+  --text-30: 1.875rem;
+  --text-38: 2.375rem;
+  --text-48: 3rem;
+  --text-60: 3.75rem;
+  --text-80: 5rem;
+
+  /* Spacing (4px base) */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 24px;
+  --spacing-6: 32px;
+  --spacing-7: 48px;
+  --spacing-8: 64px;
+  --spacing-9: 96px;
+  --spacing-10: 128px;
+
+  /* Radii */
+  --radius-flat: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  /* Shadows */
+  --shadow-1: 0 1px 2px rgba(25, 21, 18, 0.08);
+  --shadow-2: 0 4px 16px rgba(25, 21, 18, 0.12);
+
+  /* Motion */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+
   --animate-rainbow-color: rainbow-color;
   @keyframes rainbow-color {
     0% {
-      color: hsl(0, var(--hsl-saturation) 5var (--hsl-lightness));
+      color: hsl(0, var(--hsl-saturation), var(--hsl-lightness));
     }
     10% {
       color: hsl(36, var(--hsl-saturation), var(--hsl-lightness));
@@ -61,6 +122,18 @@
   }
 }
 
+[data-theme="ink"] {
+  --color-paper: #191512;
+  --color-ink: #fdfcfa;
+  --color-ink-2: #d4ccbc;
+  --color-ink-3: #9a8f84;
+  --color-ink-4: #6f665e;
+  --color-rule: #3a332d;
+  --color-rule-strong: #4a3e36;
+  --color-bg-sunken: #131110;
+  --color-bg-raised: #221e1a;
+}
+
 @utility timeline-scroll-y-nearest {
   animation-timeline: scroll(block nearest);
   animation-timing-function: alternate;
@@ -86,7 +159,6 @@ body {
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 

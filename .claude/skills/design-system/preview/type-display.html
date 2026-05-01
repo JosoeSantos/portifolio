@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>type · display</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 28px;
+        background: var(--bg);
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 16px;
+        align-items: baseline;
+        padding: 6px 0;
+        border-bottom: 1px solid var(--rule);
+      }
+      .row:last-child {
+        border-bottom: 0;
+      }
+      .meta {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--fg-3);
+      }
+      .spec {
+        font-family: var(--font-display);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        color: var(--fg);
+        line-height: 1.05;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="meta">h1 · 64/1.05</div>
+      <div class="spec" style="font-size: 48px">careful software</div>
+    </div>
+    <div class="row">
+      <div class="meta">h2 · 30/1.2</div>
+      <div class="spec" style="font-size: 30px">build, write, ship</div>
+    </div>
+    <div class="row">
+      <div class="meta">h3 · 20/1.2</div>
+      <div class="spec" style="font-size: 20px">a parser for a tiny lisp</div>
+    </div>
+    <div class="row">
+      <div class="meta">h4 · 16/1.4</div>
+      <div class="spec" style="font-size: 16px; font-weight: 500">
+        notes from this week
+      </div>
+    </div>
+  </body>
+</html>

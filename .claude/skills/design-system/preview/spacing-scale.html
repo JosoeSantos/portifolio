@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>spacing</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        background: var(--bg);
+        font-family: var(--font-mono);
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 5px 0;
+      }
+      .tok {
+        width: 56px;
+        font-size: 11px;
+        color: var(--fg-3);
+      }
+      .px {
+        width: 48px;
+        font-size: 11px;
+        color: var(--accent);
+      }
+      .bar {
+        height: 12px;
+        background: var(--accent);
+        border-radius: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <span class="tok">--s-1</span><span class="px">4</span>
+      <div class="bar" style="width: 4px"></div>
+    </div>
+    <div class="row">
+      <span class="tok">--s-2</span><span class="px">8</span>
+      <div class="bar" style="width: 8px"></div>
+    </div>
+    <div class="row">
+      <span class="tok">--s-3</span><span class="px">12</span>
+      <div class="bar" style="width: 12px"></div>
+    </div>
+    <div class="row">
+      <span class="tok">--s-4</span><span class="px">16</span>
+      <div class="bar" style="width: 16px"></div>
+    </div>
+    <div class="row">
+      <span class="tok">--s-5</span><span class="px">24</span>
+      <div class="bar" style="width: 24px"></div>
+    </div>
+    <div class="row">
+      <span class="tok">--s-6</span><span class="px">32</span>
+      <div class="bar" style="width: 32px"></div>
+    </div>
+    <div class="row">
+      <span class="tok">--s-7</span><span class="px">48</span>
+      <div class="bar" style="width: 48px"></div>
+    </div>
+    <div class="row">
+      <span class="tok">--s-8</span><span class="px">64</span>
+      <div class="bar" style="width: 64px"></div>
+    </div>
+    <div class="row">
+      <span class="tok">--s-9</span><span class="px">96</span>
+      <div class="bar" style="width: 96px"></div>
+    </div>
+    <div class="row">
+      <span class="tok">--s-10</span><span class="px">128</span>
+      <div class="bar" style="width: 128px"></div>
+    </div>
+  </body>
+</html>

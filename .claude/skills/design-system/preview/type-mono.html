@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>type · mono</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 28px;
+        background: var(--bg);
+      }
+      .meta {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--fg-3);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: var(--font-mono);
+        font-feature-settings: "tnum";
+        font-size: 13px;
+      }
+      th {
+        text-align: left;
+        font-weight: 500;
+        color: var(--fg-3);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        font-size: 11px;
+        padding: 6px 0;
+        border-bottom: 1px solid var(--rule);
+      }
+      td {
+        padding: 8px 0;
+        border-bottom: 1px solid var(--rule);
+        color: var(--fg);
+      }
+      tr:last-child td {
+        border-bottom: 0;
+      }
+      .accent {
+        color: var(--accent);
+      }
+      .dim {
+        color: var(--fg-3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="meta">fira code · tabular numerals</div>
+    <table>
+      <thead>
+        <tr>
+          <th>date</th>
+          <th>commit</th>
+          <th>note</th>
+          <th style="text-align: right">+/−</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2026-04-22</td>
+          <td class="dim">a3f81c2</td>
+          <td>parser: handle nested quotes</td>
+          <td style="text-align: right" class="accent">+184 −12</td>
+        </tr>
+        <tr>
+          <td>2026-04-19</td>
+          <td class="dim">7d10e44</td>
+          <td>notes app: search by tag</td>
+          <td style="text-align: right" class="accent">+ 92 − 4</td>
+        </tr>
+        <tr>
+          <td>2026-04-15</td>
+          <td class="dim">b29c0aa</td>
+          <td>typeset: fix kerning regression</td>
+          <td style="text-align: right" class="accent">+ 41 −38</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>

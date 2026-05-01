@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>cards</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        background: var(--bg);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .card {
+        border: 1px solid var(--rule);
+        border-radius: var(--r-3);
+        padding: 18px;
+        background: var(--bg-raised);
+        transition: border-color var(--d-fast) var(--ease);
+      }
+      .card:hover {
+        border-color: var(--rule-strong);
+      }
+      .meta {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--fg-3);
+      }
+      .title {
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: var(--fg);
+        margin: 6px 0 6px;
+      }
+      .body {
+        font-family: var(--font-serif);
+        font-size: 14px;
+        line-height: 1.55;
+        color: var(--fg-2);
+      }
+      .tags {
+        display: flex;
+        gap: 6px;
+        margin-top: 10px;
+      }
+      .tag {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: var(--fg-3);
+        border: 1px solid var(--rule);
+        padding: 2px 6px;
+        border-radius: var(--r-1);
+      }
+      .accent-tag {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <article class="card">
+        <div class="meta">essay · 12 min</div>
+        <h3 class="title">notes on writing a parser</h3>
+        <p class="body">
+          a few mistakes i made building a tiny lisp interpreter in C, and what
+          i learned by undoing them.
+        </p>
+        <div class="tags">
+          <span class="tag accent-tag">parsers</span><span class="tag">c</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">project · current</div>
+        <h3 class="title">typeset</h3>
+        <p class="body">
+          a typesetting tool for personal essays. layout engine in rust, web
+          frontend.
+        </p>
+        <div class="tags">
+          <span class="tag accent-tag">rust</span
+          ><span class="tag">typography</span>
+        </div>
+      </article>
+    </div>
+  </body>
+</html>

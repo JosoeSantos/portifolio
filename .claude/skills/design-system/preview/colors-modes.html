@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>paper vs ink</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .pane {
+        padding: 28px;
+        min-height: 220px;
+        position: relative;
+      }
+      .pane.paper {
+        background: #fdfcfa;
+        color: #191512;
+      }
+      .pane.ink {
+        background: #191512;
+        color: #f6f4ef;
+      }
+      .tag {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: inherit;
+        opacity: 0.5;
+      }
+      .head {
+        font-family: var(--font-display);
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin: 8px 0 12px;
+      }
+      .body {
+        font-family: var(--font-serif);
+        font-size: 14px;
+        line-height: 1.6;
+        opacity: 0.9;
+      }
+      .accent {
+        color: #913832;
+      }
+      .pane.ink .accent {
+        color: #c75d54;
+      }
+      .rule {
+        height: 1px;
+        background: currentColor;
+        opacity: 0.12;
+        margin: 14px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="pane paper">
+      <div class="tag">paper · canonical</div>
+      <div class="head">careful, by default.</div>
+      <div class="rule"></div>
+      <div class="body">
+        long-form reading lives here. body sets in
+        <span class="accent">newsreader</span>, the only chromatic note is the
+        ochre rule beneath the title.
+      </div>
+    </div>
+    <div class="pane ink">
+      <div class="tag">ink · supported</div>
+      <div class="head">careful, after dark.</div>
+      <div class="rule"></div>
+      <div class="body">
+        contrast holds; ochre lifts to <span class="accent">#C75D54</span> for
+        legibility. neutrals stay warm — never cool gray.
+      </div>
+    </div>
+  </body>
+</html>

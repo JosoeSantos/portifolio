@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>iconography</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        background: var(--bg);
+      }
+      .label {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--fg-3);
+        margin-bottom: 12px;
+      }
+      .row {
+        display: flex;
+        gap: 22px;
+        align-items: center;
+        flex-wrap: wrap;
+        color: var(--fg-2);
+      }
+      .row + .row {
+        margin-top: 16px;
+      }
+      .icon {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--fg-3);
+      }
+      .icon svg {
+        stroke-width: 1.5;
+      }
+      .accent {
+        color: var(--accent);
+      }
+      .uni {
+        font-family: var(--font-display);
+        font-size: 18px;
+        color: var(--fg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="label">lucide · 1.5px stroke · currentColor</div>
+    <div class="row">
+      <span class="icon"
+        ><i data-lucide="file-text" width="20" height="20"></i> essay</span
+      >
+      <span class="icon"
+        ><i data-lucide="folder-git-2" width="20" height="20"></i> project</span
+      >
+      <span class="icon"
+        ><i data-lucide="rss" width="20" height="20"></i> feed</span
+      >
+      <span class="icon"
+        ><i data-lucide="search" width="20" height="20"></i> search</span
+      >
+      <span class="icon"
+        ><i data-lucide="moon" width="20" height="20"></i> ink</span
+      >
+      <span class="icon"
+        ><i data-lucide="link" width="20" height="20"></i> permalink</span
+      >
+    </div>
+    <div class="label" style="margin-top: 18px">
+      unicode arrows · preferred inline
+    </div>
+    <div class="row">
+      <span class="uni">→</span><span class="uni">←</span
+      ><span class="uni">↑</span><span class="uni">↓</span
+      ><span class="uni">↗</span> <span class="uni accent">·</span
+      ><span class="uni accent">—</span><span class="uni accent">§</span
+      ><span class="uni accent">†</span><span class="uni accent">№</span>
+    </div>
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <rect x="0.5" y="0.5" width="47" height="47" rx="3" fill="none" stroke="#913832" stroke-width="1"></rect>
+  <text x="24" y="32" font-family="Nunito Sans, system-ui, sans-serif" font-weight="600" font-size="22" letter-spacing="-1" text-anchor="middle" fill="#913832">xy</text>
+</svg>

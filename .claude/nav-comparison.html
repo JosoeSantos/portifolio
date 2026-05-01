@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nav — UI Kit vs Component</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ochre: #913832;
+    --ochre-deep: #6a221d;
+    --paper: #fdfcfa;
+    --ink: #191512;
+    --ink-2: #3a332d;
+    --ink-3: #6f665e;
+    --ink-4: #9a8f84;
+    --rule: #ece7dd;
+    --rule-strong: #d4ccbc;
+    --bg-sunken: #f6f4ef;
+    --bg-raised: #ffffff;
+    --accent: var(--ochre);
+    --font-display: "Nunito Sans", sans-serif;
+    --font-ui: "Nunito Sans", sans-serif;
+    --font-mono: "Fira Code", monospace;
+    --r-2: 4px;
+    --d-fast: 120ms;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  body {
+    background: #f0ede8;
+    font-family: var(--font-ui);
+    font-size: 14px;
+    color: var(--ink);
+    padding: 40px 32px 80px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--ink-3);
+    font-family: var(--font-mono);
+    margin-bottom: 48px;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 12px;
+  }
+
+  .nav-frame {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+
+  .pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .side-label {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--ink-3);
+    margin-bottom: 8px;
+  }
+  .side-label .tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 2px;
+    border: 1px solid;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .tag.spec { color: #4f6b3e; border-color: #4f6b3e; }
+  .tag.actual { color: #913832; border-color: #913832; }
+
+  /* ================================================================
+     UI KIT NAV  (exact replica of styles.css .ds-nav)
+     ================================================================ */
+  .kit-nav {
+    position: relative;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 24px;                              /* gap between brand / links / util */
+    padding: 14px 32px;                     /* 14px top/bottom, 32px sides */
+    border-bottom: 1px solid var(--rule);
+    background: rgba(253, 252, 250, 0.72);
+    backdrop-filter: blur(10px) saturate(140%);
+  }
+
+  .kit-brand {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    font-size: 16px;
+    color: var(--ink);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .kit-brand .dot { color: var(--ochre); }
+
+  .kit-links {
+    display: flex;
+    gap: 18px;                              /* 18px between links */
+    flex: 1;
+  }
+  .kit-links a {
+    font-family: var(--font-ui);
+    font-size: 14px;
+    color: var(--ink-2);
+    cursor: pointer;
+    text-decoration: none;
+    transition: color var(--d-fast) var(--ease);
+  }
+  .kit-links a.active { color: var(--ochre); }
+  .kit-links a:hover { color: var(--ink); }
+
+  .kit-util {
+    display: flex;
+    gap: 14px;                              /* 14px gap in util section */
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-3);
+  }
+
+  .kit-theme {
+    font: 12px var(--font-mono);            /* 12px mono */
+    color: var(--ink-2);
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: var(--r-2);             /* 4px */
+    padding: 4px 10px;                      /* 4px top/bottom, 10px sides */
+    cursor: pointer;
+    transition: all var(--d-fast) var(--ease);
+  }
+  .kit-theme:hover {
+    border-color: var(--rule-strong);
+    color: var(--ink);
+  }
+
+  /* ================================================================
+     COMPONENT NAV  (exact replica of nav.tsx)
+     ================================================================ */
+  .comp-nav {
+    position: relative;
+    border-bottom: 1px solid var(--rule);
+    background: rgba(253, 252, 250, 0.72);
+    backdrop-filter: blur(10px) saturate(140%);
+  }
+  .comp-nav-inner {
+    display: flex;
+    height: 56px;                           /* h-14 = 56px */
+    align-items: center;
+    justify-content: space-between;         /* brand pushed left, actions right */
+    padding: 0 32px;                        /* px-8, no vertical padding */
+  }
+
+  .comp-brand {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.025em;              /* tracking-tight */
+    font-size: 16px;                        /* default text size */
+    color: var(--ink);
+  }
+  .comp-brand .dot { color: var(--ochre); }
+
+  .comp-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;                              /* gap-4 = 16px */
+  }
+
+  .comp-links {
+    display: flex;
+    gap: 24px;                              /* gap-6 = 24px */
+  }
+  .comp-links a {
+    font-family: var(--font-ui);
+    font-size: 14px;                        /* text-sm */
+    color: var(--ink-2);
+    text-decoration: none;
+  }
+  .comp-links a.active { color: var(--ochre); }
+
+  /* Button component — secondary variant */
+  .comp-button {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-ui);
+    font-size: 14px;                        /* text-sm */
+    font-weight: 500;
+    border-radius: 4px;                    /* rounded-sm */
+    padding: 8px 16px;                      /* py-2 px-4 */
+    border: 1px solid var(--rule);
+    background: transparent;
+    cursor: pointer;
+    transition: all 120ms var(--ease);
+  }
+  .comp-button:hover {
+    border-color: var(--rule-strong);
+    background: var(--bg-sunken);
+  }
+
+  /* ================================================================
+     DIFF TABLE
+     ================================================================ */
+  .diff-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 48px;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .diff-table th {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding: 10px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg-sunken);
+  }
+  .diff-table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: middle;
+  }
+  .diff-table tr:last-child td { border-bottom: 0; }
+  .diff-table td:first-child {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-3);
+    white-space: nowrap;
+    width: 200px;
+  }
+  .diff-table td.ok { color: #4f6b3e; }
+  .diff-table td.bad { color: #913832; font-weight: 500; }
+  .diff-table td.mono { font-family: var(--font-mono); font-size: 12px; }
+  .badge-ok {
+    display: inline-block;
+    font-size: 10px; font-family: var(--font-mono);
+    letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 2px 6px; border-radius: 2px;
+    border: 1px solid #4f6b3e; color: #4f6b3e;
+    margin-right: 4px;
+  }
+  .badge-fix {
+    display: inline-block;
+    font-size: 10px; font-family: var(--font-mono);
+    letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 2px 6px; border-radius: 2px;
+    border: 1px solid #913832; color: #913832;
+    margin-right: 4px;
+  }
+
+  /* ================================================================
+     SIZE CALLOUTS  (visual ruler comparison)
+     ================================================================ */
+  .rulers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .ruler-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 24px;
+  }
+  .ruler-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 16px;
+  }
+  .ruler-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .ruler-name {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    width: 110px;
+    flex-shrink: 0;
+  }
+  .ruler-bar-wrap {
+    flex: 1;
+    height: 24px;
+    background: var(--bg-sunken);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+  }
+  .ruler-bar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 6px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: white;
+    white-space: nowrap;
+    border-radius: 2px;
+  }
+  .ruler-bar.spec-color { background: #4f6b3e; }
+  .ruler-bar.comp-color { background: #913832; }
+</style>
+</head>
+<body>
+
+<h1>Nav — UI Kit vs Component</h1>
+<p class="subtitle">nav.tsx · 2026-05-01</p>
+
+<!-- ============================================================ -->
+<!-- SIDE-BY-SIDE                                                 -->
+<!-- ============================================================ -->
+
+<p class="section-label">Side by side — light theme</p>
+<div class="pair">
+  <div>
+    <p class="side-label">UI Kit <span class="tag spec">spec</span></p>
+    <div class="nav-frame">
+      <nav class="kit-nav">
+        <a class="kit-brand">josoe<span class="dot">.</span></a>
+        <div class="kit-links">
+          <a class="active">essays</a>
+          <a>projects</a>
+          <a>now</a>
+        </div>
+        <div class="kit-util">
+          <button class="kit-theme">dark</button>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <div>
+    <p class="side-label">Component <span class="tag actual">actual</span></p>
+    <div class="nav-frame">
+      <header class="comp-nav">
+        <div class="comp-nav-inner">
+          <span class="comp-brand">josoe<span class="dot">.</span></span>
+          <div class="comp-actions">
+            <nav class="comp-links">
+              <a class="active">essays</a>
+              <a>projects</a>
+              <a>now</a>
+            </nav>
+            <button class="comp-button">dark</button>
+          </div>
+        </div>
+      </header>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- THEME TOGGLE ZOOM                                            -->
+<!-- ============================================================ -->
+
+<p class="section-label">Theme toggle — close-up</p>
+<div class="pair" style="align-items:start">
+  <div>
+    <p class="side-label">UI Kit <span class="tag spec">spec</span></p>
+    <div style="background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:24px;display:inline-flex;align-items:center;gap:16px;">
+      <button class="kit-theme">dark</button>
+      <span style="font-family:var(--font-mono);font-size:11px;color:var(--ink-3);">12px mono · 4px 10px pad · 4px radius</span>
+    </div>
+  </div>
+  <div>
+    <p class="side-label">Component <span class="tag actual">actual</span></p>
+    <div style="background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:24px;display:inline-flex;align-items:center;gap:16px;">
+      <button class="comp-button">dark</button>
+      <span style="font-family:var(--font-mono);font-size:11px;color:var(--ink-3);">14px sans · 8px 16px pad · 4px radius</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SIZE RULERS                                                  -->
+<!-- ============================================================ -->
+
+<br/><br/>
+<p class="section-label">Spacing rulers</p>
+<div class="rulers">
+  <div class="ruler-card">
+    <p class="ruler-label">Nav height</p>
+    <div class="ruler-row">
+      <span class="ruler-name">UI Kit</span>
+      <div class="ruler-bar-wrap">
+        <!-- 28px total (14+14) out of 56px max → ~50% -->
+        <div class="ruler-bar spec-color" style="width:50%;">44px (14+14 pad)</div>
+      </div>
+    </div>
+    <div class="ruler-row">
+      <span class="ruler-name">Component</span>
+      <div class="ruler-bar-wrap">
+        <div class="ruler-bar comp-color" style="width:100%;">56px (h-14 fixed)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ruler-card">
+    <p class="ruler-label">Theme toggle padding (horizontal)</p>
+    <div class="ruler-row">
+      <span class="ruler-name">UI Kit</span>
+      <div class="ruler-bar-wrap">
+        <div class="ruler-bar spec-color" style="width:31%;">10px</div>
+      </div>
+    </div>
+    <div class="ruler-row">
+      <span class="ruler-name">Component</span>
+      <div class="ruler-bar-wrap">
+        <div class="ruler-bar comp-color" style="width:50%;">16px</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ruler-card">
+    <p class="ruler-label">Theme toggle padding (vertical)</p>
+    <div class="ruler-row">
+      <span class="ruler-name">UI Kit</span>
+      <div class="ruler-bar-wrap">
+        <div class="ruler-bar spec-color" style="width:12.5%;">4px</div>
+      </div>
+    </div>
+    <div class="ruler-row">
+      <span class="ruler-name">Component</span>
+      <div class="ruler-bar-wrap">
+        <div class="ruler-bar comp-color" style="width:25%;">8px</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ruler-card">
+    <p class="ruler-label">Nav links gap</p>
+    <div class="ruler-row">
+      <span class="ruler-name">UI Kit</span>
+      <div class="ruler-bar-wrap">
+        <div class="ruler-bar spec-color" style="width:56%;">18px</div>
+      </div>
+    </div>
+    <div class="ruler-row">
+      <span class="ruler-name">Component</span>
+      <div class="ruler-bar-wrap">
+        <div class="ruler-bar comp-color" style="width:75%;">24px</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- DIFF TABLE                                                   -->
+<!-- ============================================================ -->
+
+<p class="section-label">Full diff</p>
+<table class="diff-table">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>UI Kit (spec)</th>
+      <th>Component (actual)</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Layout model</td>
+      <td class="mono">flex · gap: 24px · 3 children<br/>(brand | links | util)</td>
+      <td class="mono">flex · justify-between · 2 children<br/>(brand | actions{links+toggle})</td>
+      <td><span class="badge-fix">fix</span> structure differs</td>
+    </tr>
+    <tr>
+      <td>Nav height</td>
+      <td class="mono">padding: 14px 32px<br/>→ natural ~44px</td>
+      <td class="mono">height: 56px (h-14)<br/>padding: 0 32px</td>
+      <td><span class="badge-fix">fix</span> 12px taller</td>
+    </tr>
+    <tr>
+      <td>Links gap</td>
+      <td class="mono">gap: 18px</td>
+      <td class="mono">gap: 24px (gap-6)</td>
+      <td><span class="badge-fix">fix</span> 6px wider</td>
+    </tr>
+    <tr>
+      <td>Theme toggle font</td>
+      <td class="mono">12px Fira Code (mono)</td>
+      <td class="mono">14px Nunito Sans (sans)</td>
+      <td><span class="badge-fix">fix</span> wrong family + size</td>
+    </tr>
+    <tr>
+      <td>Theme toggle padding</td>
+      <td class="mono">4px 10px</td>
+      <td class="mono">8px 16px (py-2 px-4)</td>
+      <td><span class="badge-fix">fix</span> 2× too large</td>
+    </tr>
+    <tr>
+      <td>Theme toggle color</td>
+      <td class="mono">var(--ink-2) / var(--ink-3)</td>
+      <td class="mono">inherits ink (no explicit)</td>
+      <td><span class="badge-fix">fix</span> should be ink-2</td>
+    </tr>
+    <tr>
+      <td>Brand font size</td>
+      <td class="mono">16px · tracking -0.02em</td>
+      <td class="mono">default (16px) · tracking-tight</td>
+      <td><span class="badge-ok">ok</span> effectively same</td>
+    </tr>
+    <tr>
+      <td>Link font/size</td>
+      <td class="mono">14px Nunito Sans</td>
+      <td class="mono">14px Nunito Sans (text-sm)</td>
+      <td><span class="badge-ok">ok</span></td>
+    </tr>
+    <tr>
+      <td>Active link color</td>
+      <td class="mono">var(--accent) / ochre</td>
+      <td class="mono">text-ochre</td>
+      <td><span class="badge-ok">ok</span></td>
+    </tr>
+    <tr>
+      <td>Inactive link color</td>
+      <td class="mono">var(--fg-2) / ink-2</td>
+      <td class="mono">text-ink-2</td>
+      <td><span class="badge-ok">ok</span></td>
+    </tr>
+    <tr>
+      <td>Border-bottom</td>
+      <td class="mono">1px solid var(--rule)</td>
+      <td class="mono">border-b border-rule</td>
+      <td><span class="badge-ok">ok</span></td>
+    </tr>
+    <tr>
+      <td>Backdrop blur</td>
+      <td class="mono">blur(10px) saturate(140%)</td>
+      <td class="mono">backdrop-blur-[10px] saturate-150</td>
+      <td><span class="badge-ok">ok</span> ~same</td>
+    </tr>
+    <tr>
+      <td>Sticky positioning</td>
+      <td class="mono">sticky top: 0 z-index: 50</td>
+      <td class="mono">sticky top-0 z-50</td>
+      <td><span class="badge-ok">ok</span></td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

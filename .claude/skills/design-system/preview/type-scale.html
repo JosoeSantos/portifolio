@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>type · scale</title>
+    <link rel="stylesheet" href="../colors_and_type.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        background: var(--bg);
+        font-family: var(--font-mono);
+      }
+      .row {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        padding: 4px 0;
+        border-bottom: 1px dashed var(--rule);
+      }
+      .row:last-child {
+        border-bottom: 0;
+      }
+      .tok {
+        width: 56px;
+        color: var(--fg-3);
+        font-size: 11px;
+      }
+      .px {
+        width: 56px;
+        color: var(--accent);
+        font-size: 11px;
+      }
+      .sample {
+        font-family: var(--font-display);
+        color: var(--fg);
+        letter-spacing: -0.02em;
+        flex: 1;
+        line-height: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <span class="tok">--t-12</span><span class="px">12px</span
+      ><span class="sample" style="font-size: 12px">the quick brown fox</span>
+    </div>
+    <div class="row">
+      <span class="tok">--t-15</span><span class="px">15px</span
+      ><span class="sample" style="font-size: 15px">the quick brown fox</span>
+    </div>
+    <div class="row">
+      <span class="tok">--t-20</span><span class="px">20px</span
+      ><span class="sample" style="font-size: 20px">the quick brown fox</span>
+    </div>
+    <div class="row">
+      <span class="tok">--t-30</span><span class="px">30px</span
+      ><span class="sample" style="font-size: 30px">the quick brown</span>
+    </div>
+    <div class="row">
+      <span class="tok">--t-48</span><span class="px">48px</span
+      ><span class="sample" style="font-size: 42px; font-weight: 600"
+        >the quick brown</span
+      >
+    </div>
+  </body>
+</html>
