@@ -2,12 +2,18 @@
 
 type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant: "primary" | "secondary" | "ghost";
+  size?: "default" | "compact";
   children: React.ReactNode;
 };
 
-export function Button({ variant, children, className, ...rest }: ButtonProps) {
+export function Button({ variant, size = "default", children, className, ...rest }: ButtonProps) {
   const base =
-    "rounded-sm px-4 py-2 text-sm font-medium font-sans transition-all duration-[120ms] cursor-pointer active:translate-y-px";
+    "rounded-sm transition-all duration-[120ms] cursor-pointer active:translate-y-px";
+
+  const sizes = {
+    default: "px-4 py-2 text-sm font-medium font-sans",
+    compact: "px-[10px] py-1 text-xs font-normal font-mono",
+  };
 
   const variants = {
     primary: "bg-ochre text-paper hover:bg-ochre-deep",
@@ -17,7 +23,7 @@ export function Button({ variant, children, className, ...rest }: ButtonProps) {
   };
 
   return (
-    <button className={`${base} ${variants[variant]}`} {...rest}>
+    <button className={`${base} ${sizes[size]} ${variants[variant]} ${className ?? ""}`} {...rest}>
       {children}
     </button>
   );
