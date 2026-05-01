@@ -35,3 +35,12 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# playwright
+playwright-report
+test-results
+storybook-static
+
+# loki
+
+loki-data
