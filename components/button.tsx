@@ -23,7 +23,7 @@ export function Button({ variant, size = "default", children, className, ...rest
   };
 
   return (
-    <button className={`${base} ${sizes[size]} ${variants[variant]} ${className ?? ""}`} {...rest}>
+    <button className={[base, sizes[size], variants[variant], className].filter(Boolean).join(" ")} {...rest}>
       {children}
     </button>
   );
