@@ -52,7 +52,7 @@ export default function HomePage() {
             all posts →
           </Link>
         </header>
-        <div className="divide-rule divide-y">
+        <div>
           {posts.map((post) => (
             <Link
               key={post.slug}
