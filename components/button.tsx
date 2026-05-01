@@ -12,7 +12,7 @@ export function Button({ variant, size = "default", children, className, ...rest
 
   const sizes = {
     default: "px-4 py-2 text-sm font-medium font-sans",
-    compact: "px-[10px] py-1 text-xs font-normal font-mono",
+    compact: "px-2.5 py-1 text-xs font-normal font-mono",
   };
 
   const variants = {
