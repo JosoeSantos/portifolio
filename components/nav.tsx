@@ -15,10 +15,10 @@ type NavThemeToggleProps = {
   onTheme: () => void;
 };
 
-function Root({ children }: { children: React.ReactNode }) {
+function Root({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-[10px] saturate-150 border-b border-rule">
-      <div className="flex items-center justify-between px-8 h-14">
+    <header className="border-rule sticky top-0 z-50 border-b saturate-150 backdrop-blur-[10px]">
+      <div className="flex items-center justify-between px-8 py-[14px]">
         {children}
       </div>
     </header>
@@ -27,36 +27,48 @@ function Root({ children }: { children: React.ReactNode }) {
 
 function Brand() {
   return (
-    <span className="font-sans font-semibold tracking-tight text-ink">
+    <span className="text-ink font-sans font-semibold tracking-tight">
       josoe<span className="text-ochre">.</span>
     </span>
   );
 }
 
-function Links({ children }: { children: React.ReactNode }) {
-  return <nav aria-label="Main" className="flex gap-6">{children}</nav>;
+function Links({ children }: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <nav aria-label="Main" className="flex gap-[18px]">
+      {children}
+    </nav>
+  );
 }
 
-function Link({ href, active, onNav, children }: NavLinkProps) {
+function Link({ href, active, onNav, children }: Readonly<NavLinkProps>) {
   return (
     <NextLink
       href={href}
       onClick={() => onNav?.(href)}
       aria-current={active ? "page" : undefined}
-      className={`font-sans text-sm no-underline ${active ? "text-ochre" : "text-ink-2"}`}
+      className={`font-sans text-sm no-underline ${
+        active ? "text-ochre" : "text-ink-2"
+      }`}
     >
       {children}
     </NextLink>
   );
 }
 
-function Actions({ children }: { children: React.ReactNode }) {
+function Actions({ children }: Readonly<{ children: React.ReactNode }>) {
   return <div className="flex items-center gap-4">{children}</div>;
 }
 
-function ThemeToggle({ theme, onTheme }: NavThemeToggleProps) {
+function ThemeToggle({ theme, onTheme }: Readonly<NavThemeToggleProps>) {
   return (
-    <Button variant="ghost" onClick={onTheme} aria-pressed={theme === "ink"}>
+    <Button
+      variant="secondary"
+      size="compact"
+      className="text-ink-2"
+      onClick={onTheme}
+      aria-pressed={theme === "ink"}
+    >
       {theme === "paper" ? "dark" : "light"}
     </Button>
   );
