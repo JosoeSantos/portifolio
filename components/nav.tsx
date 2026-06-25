@@ -24,7 +24,7 @@ const Root = ({ children }: NavRootProps) => (
 );
 
 const Brand = () => (
-  <Link href="/" className="text-xl font-bold font-serif">
+  <Link href="/" className="font-sans text-base font-semibold tracking-[-0.02em]">
     Josoe.
   </Link>
 );

@@ -1,5 +1,14 @@
 import type { MDXComponents } from "mdx/types";
 
+import {
+  EssayCodeBlock,
+  EssayEnd,
+  FootnoteRef,
+  Marginalia,
+  MarginaliaStat,
+  ProseRow,
+  Section,
+} from "@/components/essay";
 import { Blockquote, H1, H2, H3, H4, H5, H6, Li, P, Ul } from "./typography";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -14,6 +23,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ul: Ul,
     li: Li,
     blockquote: Blockquote,
+    Section,
+    ProseRow,
+    Marginalia,
+    MarginaliaStat,
+    FootnoteRef,
+    EssayCodeBlock,
+    EssayEnd,
     ...components,
   };
 }

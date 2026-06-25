@@ -1,0 +1,37 @@
+/* ============================================================
+   Subtle grid background — the signature promo motif.
+   Inspired by zed.dev's hairline architectural grid.
+   ============================================================ */
+
+.grid-bg {
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(to right, var(--rule-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--rule-grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: -1px -1px;
+}
+
+/* Optional: fade the grid at viewport edges (use on heroes) */
+.grid-bg-mask {
+  -webkit-mask-image:
+    radial-gradient(ellipse 80% 70% at 50% 35%, #000 50%, transparent 100%);
+          mask-image:
+    radial-gradient(ellipse 80% 70% at 50% 35%, #000 50%, transparent 100%);
+}
+
+/* Larger 64px variant — used behind very wide layouts */
+.grid-bg-lg {
+  background-size: 64px 64px;
+}
+
+/* Diagonal hatch — secondary motif, used very rarely (e.g. 404, "draft" stamps) */
+.hatch-bg {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--rule-grid) 0,
+    var(--rule-grid) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+}

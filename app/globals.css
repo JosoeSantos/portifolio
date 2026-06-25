@@ -37,6 +37,7 @@
   --color-ink-4: #9a8f84;
   --color-rule: #ece7dd;
   --color-rule-strong: #d4ccbc;
+  --color-rule-grid: rgba(58, 51, 45, 0.05);
   --color-bg-sunken: #f6f4ef;
   --color-bg-raised: #ffffff;
   --color-status-live: #4f6b3e;
@@ -130,8 +131,17 @@
   --color-ink-4: #6f665e;
   --color-rule: #3a332d;
   --color-rule-strong: #4a3e36;
+  --color-rule-grid: rgba(242, 238, 230, 0.05);
   --color-bg-sunken: #131110;
   --color-bg-raised: #221e1a;
+}
+
+@utility hairline-grid {
+  background-image:
+    linear-gradient(to right, var(--color-rule-grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-rule-grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: -1px -1px;
 }
 
 @utility timeline-scroll-y-nearest {

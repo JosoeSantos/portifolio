@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { EssayRow } from "@/components/essay-row";
+import { Footer } from "@/components/footer";
 import { Hero } from "@/components/hero";
 
 type Post = {
@@ -69,6 +70,17 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+      <Footer.Root>
+        <Footer.Copyright name="Josoe Santos" />
+        <Footer.Separator />
+        <Footer.LinkGroup>
+          <Footer.Link href="https://github.com/josoesantos" target="_blank" rel="noopener noreferrer">github</Footer.Link>
+          <Footer.Separator />
+          <Footer.Link href="https://linkedin.com/in/josoesantos" target="_blank" rel="noopener noreferrer">linkedin</Footer.Link>
+          <Footer.Separator />
+          <Footer.Link href="mailto:jssantosqueiroz@gmail.com">email</Footer.Link>
+        </Footer.LinkGroup>
+      </Footer.Root>
     </>
   );
 }

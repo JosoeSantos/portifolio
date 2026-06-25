@@ -18,7 +18,7 @@ export function Hero({ name, blurb, onEssays, onProjects }: HeroProps) {
       }}
     >
       <p className="text-ink-3 mb-6 font-mono text-xs tracking-[0.04em] uppercase">
-        engineer &amp; writer
+        engineer &amp; tinkerer &amp; writer
       </p>
       <h1 className="max-w-[14ch] font-sans text-[clamp(2.5rem,7vw,5rem)] leading-[1.02] font-semibold tracking-[-0.025em]">
         {name}
@@ -42,9 +42,9 @@ export function Hero({ name, blurb, onEssays, onProjects }: HeroProps) {
         </button>
       </div>
       <div className="text-ink-3 border-rule flex gap-6 border-t pt-6 font-mono text-xs">
-        <span>based in lisbon</span>
-        <span>open to work</span>
-        <span>2025</span>
+          <span>based in brazil</span>
+          <span>-</span>
+          <span>{new Date().getFullYear()}</span>
       </div>
     </section>
   );

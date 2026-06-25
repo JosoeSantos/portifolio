@@ -80,9 +80,9 @@ backgroundSize: "40px 40px",
       </button>
     </div>
     <div className="text-ink-3 border-rule flex gap-6 border-t pt-6 font-mono text-xs">
-      <span>based in lisbon</span>
-      <span>open to work</span>
-      <span>2025</span>
+      <span>based in brazil</span>
+      <span>-</span>
+      <span>2026</span>
     </div>
   </Hero.Content>
 </Hero.Root>

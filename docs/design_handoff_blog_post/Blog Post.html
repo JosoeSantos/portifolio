@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>blog post — variations</title>
+<link rel="stylesheet" href="ds/tokens.css" />
+<link rel="stylesheet" href="variations.css" />
+<style>
+  body { margin: 0; background: #f6f4ef; }
+  /* Theme toggle that lives next to the canvas */
+  .theme-toggle {
+    position: fixed; top: 12px; right: 12px; z-index: 999;
+    display: flex; gap: 6px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    background: var(--bg-raised, #fff);
+    border: 1px solid var(--rule, #ECE7DD);
+    border-radius: 4px;
+    padding: 4px;
+  }
+  .theme-toggle button {
+    font: inherit; color: var(--fg-3, #6F665E);
+    background: transparent; border: 0;
+    padding: 4px 10px; border-radius: 2px; cursor: pointer;
+    letter-spacing: 0.04em; text-transform: lowercase;
+  }
+  .theme-toggle button.is-on {
+    background: var(--accent, #913832); color: #fff;
+  }
+</style>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- Global theme toggle (paper / ink) -->
+<div class="theme-toggle">
+  <button id="theme-paper" class="is-on">paper</button>
+  <button id="theme-ink">ink</button>
+</div>
+
+<div id="root"></div>
+
+<!-- Shared content + variations -->
+<script type="text/babel" src="post-content.jsx"></script>
+<script type="text/babel" src="variation-a.jsx"></script>
+<script type="text/babel" src="variation-b.jsx"></script>
+<script type="text/babel" src="variation-c.jsx"></script>
+
+<!-- Design canvas -->
+<script type="text/babel" src="design-canvas.jsx"></script>
+
+<script type="text/babel">
+const { DesignCanvas, DCSection, DCArtboard } = window;
+
+const App = () => (
+  <DesignCanvas
+    title="josoe — blog post"
+    subtitle="three variations · same essay · ochre design system"
+    initialZoom={0.55}
+  >
+    <DCSection id="post" title="single post — long-form essay">
+      <DCArtboard id="va" label="A · classic centered" width={1280} height={2200}>
+        <VariationA />
+      </DCArtboard>
+      <DCArtboard id="vb" label="B · two-column with sticky toc" width={1280} height={2000}>
+        <VariationB />
+      </DCArtboard>
+      <DCArtboard id="vc" label="C · documented · marginalia + page no." width={1440} height={2400}>
+        <VariationC />
+      </DCArtboard>
+    </DCSection>
+  </DesignCanvas>
+);
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+
+// Theme toggle wiring
+const paperBtn = document.getElementById("theme-paper");
+const inkBtn   = document.getElementById("theme-ink");
+const setTheme = (mode) => {
+  if (mode === "ink") {
+    document.documentElement.setAttribute("data-theme", "ink");
+    document.body.style.background = "#110E0C";
+    inkBtn.classList.add("is-on");
+    paperBtn.classList.remove("is-on");
+  } else {
+    document.documentElement.removeAttribute("data-theme");
+    document.body.style.background = "#f6f4ef";
+    paperBtn.classList.add("is-on");
+    inkBtn.classList.remove("is-on");
+  }
+  // Also apply theme to every artboard root so iframe-less clones reflect it
+  document.querySelectorAll(".vA-root, .vB-root, .vC-root").forEach((el) => {
+    if (mode === "ink") el.setAttribute("data-theme", "ink");
+    else el.removeAttribute("data-theme");
+  });
+};
+paperBtn.addEventListener("click", () => setTheme("paper"));
+inkBtn.addEventListener("click",   () => setTheme("ink"));
+</script>
+
+</body>
+</html>

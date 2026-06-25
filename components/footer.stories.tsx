@@ -9,7 +9,7 @@ export default meta;
 export const Default: StoryObj = {
   render: () => (
     <Footer.Root>
-      <Footer.Copyright name="josoe" year={2025} />
+      <Footer.Copyright name="josoe" />
       <Footer.Separator />
       <Footer.LinkGroup>
         <Footer.Link

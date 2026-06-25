@@ -34,6 +34,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${newsreader.className} ${nunitoSans.className} ${firaCode.variable}`}
+      suppressHydrationWarning
     >
       <body className="bg-paper text-ink antialiased">
         <ThemeProvider>

@@ -1,68 +1,80 @@
-# A viagem em direção a uma boa observabilidade
+<Section n="01" id="o-conflito" title="o conflito">
+  <ProseRow>
+    > Esse artigo destina-se a todas as pessoas que de alguma forma interagem com a
+    > produção de software. Isso iclui além de desenvolvedores os product managers, managers,
+    > designers, arquitetos, estudantes, etc...
 
-> Esse artigo destina-se a todas as pessoas que de alguma forma interagem com a
-> produção de software. Isso iclui além de desenvolvedores os product managers, managers,
-> designers, arquitetos, estudantes, etc...
+    > Para os programadores recomendo o artigo de [implementação](/posts/the-journey-towards-good-observability-implementation)
 
-> Para os programadores recomendo o artigo de [implementação](/posts/the-journey-towards-good-observability-implementation)
+    É inegavel que nossos sistemas de software se tornaram extremamente complexos e
+    difíceis de instrumentar. As causas para isso são diversas e incluem a complexidade
+    do que criamos, dificuldades de segurança da informação, complexidade de integração
+    com ferramentas modernas e despreparo de equipes de desenvolvimento.
 
-É inegavel que nossos sistemas de software se tornaram extremamente complexos e
-difíceis de instrumentar. As causas para isso são diversas e incluem a complexidade
-do que criamos, dificuldades de segurança da informação, complexidade de integração
-com ferramentas modernas e despreparo de equipes de desenvolvimento.
+    Mas em contrapartida somos cobrados como produtores de software para garantir estabilidade,
+    disponibilidade, manutenabilidade, celeridade e varias outras "dades" no nosso software.
+    Isso cria um clima de conflito terrível em boa parte das organizações que tem software
+    como produto. Tal desajuste afeta organizações desde grandes como Microsoft e
+    Red hat e a Linux fundation até startups tentando entender seus primeiros clietes.
 
-Mas em contrapartida somos cobrados como produtores de software para garantir estabilidade,
-disponibilidade, manutenabilidade, celeridade e varias outras "dades" no nosso software.
-Isso cria um clima de conflito terrível em boa parte das organizações que tem software
-como produto. Tal desajuste afeta organizações desde grandes como Microsoft e
-Red hat e a Linux fundation até startups tentando entender seus primeiros clietes.
+    E é baseado nesse conflito em que eu fui provocado a desenvolver uma
+    solução eficiente de telemetria para a organização onde trabalho: Open Telemetry.
+    O protcolo Open Telemetry é uma suíte de soluções de instrumentação, agregação
+    e distribuição de dados de telemetria para software em diversas linguages de
+    programação. Sua maior razão de existir é o efeito de vendor-locking que muitas
+    soluções de telemetria tradicionais causaram a seus clientes.
 
-E é baseado nesse conflito em que eu fui provocado a desenvolver uma
-solução eficiente de telemetria para a organização onde trabalho: Open Telemetry.
-O protcolo Open Telemetry é uma suíte de soluções de instrumentação, agregação
-e distribuição de dados de telemetria para software em diversas linguages de
-programação. Sua maior razão de existir é o efeito de vendor-locking que muitas
-soluções de telemetria tradicionais causaram a seus clientes.
+    A arquitetura do Open Telemetry faz uma padronização e separação de responsabilidades
+    que seguem padrões e discussões abertas. Apoiadas pela _Cloud native foundation_
+    as reuniões e atualizações do standard ficam acessíveis para todos os usuários
+  </ProseRow>
+</Section>
 
-A arquitetura do Open Telemetry faz uma padronização e separação de responsabilidades
-que seguem padrões e discussões abertas. Apoiadas pela _Cloud native foundation_
-as reuniões e atualizações do standard ficam acessíveis para todos os usuários
+<Section n="02" id="quais-sao-as-vantagens-de-ter-um-padrao-aberto" title="quais são as vantagens de ter um padrão aberto?">
+  <ProseRow>
+    Um padrão aberto geralmente é mais complexo porque ele deve atender a mais pessoas
+    contextos e sistemas. Mas mesmo assim acredito que as vantagens a seguir devem
+    vencer a desvantagem da complexidade facilmente:
+  </ProseRow>
+</Section>
 
-## Quais são as vantagens de ter um padrão aberto?
+<Section n="03" id="contratacao-de-mais-pessoas" title="contratação de mais pessoas">
+  <ProseRow>
+    Considere que você possui colabora em um sistema bem instrumentado com Open Telemetry
+    e precisa de preencher uma vaga na sua equipe. O ideal é que seu novo colega de
+    trabalho consiga entender sua telemetria, e se necessário, melhorá-la. Não seria
+    interessante se tivessem uma quantidade virtualmente infinita de profissionais
+    que entendem seu sistema de observabilidade?
+  </ProseRow>
+</Section>
 
-Um padrão aberto geralmente é mais complexo porque ele deve atender a mais pessoas
-contextos e sistemas. Mas mesmo assim acredito que as vantagens a seguir devem
-vencer a desvantagem da complexidade facilmente:
+<Section n="04" id="troca-de-ferramentas" title="troca de ferramentas">
+  <ProseRow>
+    Agora imagine que seu atual sistema de observabilidade passou a ter problemas
+    recorrentes de disponibilidade. Caindo bastante, com lentidão quase sempre
+    frustrando os seus desenvolvedores e atrasando o tempo de descoberta e solução
+    de bugs, incidentes e melhorias de performance.
 
-### Contratação de mais pessoas
+    Mas ao escolher trocar de sistema de observabilidade você percebe que muito do
+    código de observabilidade implementado da sua organização terá de ser refeito,
+    retestado, re-homologado e re-publicado. Na maioria das vezes o custo e o tempo
+    para essa implementação parecem ser intangíves e consequentemente difíceis de
+    fazer.
 
-Considere que você possui colabora em um sistema bem instrumentado com Open Telemetry
-e precisa de preencher uma vaga na sua equipe. O ideal é que seu novo colega de
-trabalho consiga entender sua telemetria, e se necessário, melhorá-la. Não seria
-interessante se tivessem uma quantidade virtualmente infinita de profissionais
-que entendem seu sistema de observabilidade?
+    E se você não precisar de re-fazer nada do que você tem de telemetria? Parece até
+    mentira ne?
+  </ProseRow>
+</Section>
 
-### Troca de ferramentas
+<Section n="05" id="a-jornada" title="a jornada">
+  <ProseRow>
+    Esse artigo é o primeiro de uma série de artigos que tem como objetivo mostrar
+    a jornada de um desenvolvedor de software frontend que recebeu a missão de implementar
+    soluções de observabilidade e monitoramento para systemas com um amplo parque tecnológico.
+    A jornada é longa, mas o resultado é gratificante. O objetivo é mostrar que mesmo
+    com a complexidade de um sistema de software moderno, é possível ter uma boa
+    observabilidade, e que o Open Telemetry é uma solução eficiente para isso.
+  </ProseRow>
 
-Agora imagine que seu atual sistema de observabilidade passou a ter problemas
-recorrentes de disponibilidade. Caindo bastante, com lentidão quase sempre
-frustrando os seus desenvolvedores e atrasando o tempo de descoberta e solução
-de bugs, incidentes e melhorias de performance.
-
-Mas ao escolher trocar de sistema de observabilidade você percebe que muito do
-código de observabilidade implementado da sua organização terá de ser refeito,
-retestado, re-homologado e re-publicado. Na maioria das vezes o custo e o tempo
-para essa implementação parecem ser intangíves e consequentemente difíceis de
-fazer.
-
-E se você não precisar de re-fazer nada do que você tem de telemetria? Parece até
-mentira ne?
-
-### A jornada
-
-Esse artigo é o primeiro de uma série de artigos que tem como objetivo mostrar
-a jornada de um desenvolvedor de software frontend que recebeu a missão de implementar
-soluções de observabilidade e monitoramento para systemas com um amplo parque tecnológico.
-A jornada é longa, mas o resultado é gratificante. O objetivo é mostrar que mesmo
-com a complexidade de um sistema de software moderno, é possível ter uma boa
-observabilidade, e que o Open Telemetry é uma solução eficiente para isso.
+  <EssayEnd sections={5} words={1240} />
+</Section>

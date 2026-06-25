@@ -14,6 +14,8 @@ export function NavBar() {
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
 
+  if (pathname?.startsWith("/posts/")) return null;
+
   return (
     <Nav.Root>
       <Nav.Brand />

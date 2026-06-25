@@ -1,0 +1,137 @@
+{/*
+  Reference: how to author a post for the documented essay layout.
+
+  This file is NOT a rendered route — it lives under /docs as a template.
+  Copy its structure into /posts/<slug>.mdx and update /posts/index.ts
+  with the matching frontmatter (number, title, date, dateLong, lead,
+  tags, readingTime, words).
+
+  The hero (essay number, title, lead, spec table) is rendered by
+  EssayLayout from the entry in /posts/index.ts. The MDX body should
+  start at the first <Section/>, NOT a <h1/>.
+
+  Available components (registered in mdx-components.tsx):
+
+    <Section n id title>...</Section>
+      → Numbered section heading + container.
+      n: "01" | "02" | ...   id: anchor slug   title: lowercase prose
+
+    <ProseRow marginalia={...}>...</ProseRow>
+      → A paragraph row with prose (1fr) + a 220px marginalia gutter.
+      Pass JSX into `marginalia` to render <Marginalia/> or
+      <MarginaliaStat/> next to the paragraph. Omit it for full-width
+      prose. Always wrap each block of paragraphs in a row.
+
+    <Marginalia mark="a">...</Marginalia>
+      → Footnote-style note. The mark must match a <FootnoteRef mark="a"/>
+      placed inline in the prose. Marks are letters (a, b, c…).
+
+    <MarginaliaStat stats={[...]} />
+      → Compact data callout. Each stat: { label, from, to } — renders as
+      "from → to" with strike-through on `from` and ochre on `to`.
+
+    <FootnoteRef mark="a" />
+      → Inline superscript marker that pairs with a <Marginalia/>.
+
+    <EssayCodeBlock file lang code={`...`} />
+      → Code block with caption, line numbers, and a copy button.
+
+    <EssayEnd sections={N} words={N} />
+      → The hairline-topped "¶ end · N sections · N words" mark. Place it
+      at the very bottom of the last <Section/>.
+
+  Voice rules: lowercase prose, first-person, dry, specific.
+*/}
+
+<Section n="01" id="the-symptom" title="the symptom">
+  <ProseRow
+    marginalia={
+      <Marginalia mark="a">
+        the page was a <em>customer list</em>. about 400 rows. cards
+        because the design called for it, not because i thought it was a
+        good idea.
+      </Marginalia>
+    }
+  >
+    the symptom was simple. a long page of cards — about 400 of them — was
+    dropping frames whenever a single card opened its hover state. the
+    chrome devtools timeline showed something i'd seen before but never
+    understood: the entire layout pass was running for the whole document.
+    one card opening was making chromium re-measure 399 of its
+    neighbors.<FootnoteRef mark="a" />
+
+    i tried the usual things. *will-change*. *transform: translateZ(0)*.
+    moving the hover styles off the structural element and onto a child.
+    nothing helped, because none of those address the actual problem,
+    which is that the browser doesn't know it's allowed to ignore the
+    rest of the document.
+  </ProseRow>
+</Section>
+
+<Section n="02" id="what-the-spec-says" title="what the spec actually says">
+  <ProseRow
+    marginalia={
+      <Marginalia mark="b">
+        the spec is <em>css containment level 2</em>. about thirty pages,
+        mostly edge cases. the first three are the ones you want.
+      </Marginalia>
+    }
+  >
+    the property is `contain`. the values that mattered for me were
+    `layout` and `paint`. i'd read the spec four times. four. and every
+    time i read it, i thought of it as a performance hint — like a polite
+    suggestion to the browser that it might want to optimize.<FootnoteRef mark="b" />
+    that's not what it is.
+
+    `contain: layout` is a *promise*. you are telling the browser:
+    nothing inside this box will affect layout outside of it, ever. the
+    browser believes you. it gets to skip work the way a function with
+    no side effects gets to be memoized.
+  </ProseRow>
+
+  <EssayCodeBlock
+    file="card.css"
+    lang="css"
+    code={`.card {
+  contain: layout paint;
+  /* now hover state changes, focus rings, and
+     internal animations stop the world inside
+     this box — and never reach the document. */
+}`}
+  />
+</Section>
+
+<Section n="03" id="the-fix" title="the fix, in two lines">
+  <ProseRow
+    marginalia={
+      <MarginaliaStat
+        stats={[
+          { label: "layout pass", from: "14.0ms", to: "0.4ms" },
+          { label: "inp", from: "220ms", to: "38ms" },
+        ]}
+      />
+    }
+  >
+    the fix was two lines. layout pass dropped from 14ms to 0.4ms.
+    interaction-to-next-paint went from a janky 220ms to a clean 38ms. i
+    felt a small embarrassment that this had taken me two weeks.
+  </ProseRow>
+</Section>
+
+<Section n="04" id="the-cost" title="the cost">
+  <ProseRow>
+    containment is not free. once you say `contain: layout`, the box
+    becomes a containing block for absolutely positioned descendants,
+    which means tooltips, dropdowns, and any popover that escapes the
+    card will now be clipped to it. you fix this by being more careful
+    with `contain: paint`, or by portaling the popover out of the tree
+    entirely.
+
+    i'd been writing css professionally for ten years before i used
+    `contain` in anger. i don't know why i waited. it's the rare web
+    platform feature that does what it says, costs almost nothing, and
+    shows up immediately in the profiler.
+  </ProseRow>
+
+  <EssayEnd sections={4} words={1842} />
+</Section>
